@@ -1,0 +1,24 @@
+{
+  "name": "tddd272015-notedown",
+  "version": "0.0.1",
+  "description": "A project for the course TDDD27 Advanced Web Programming.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.ida.liu.se:henro843/tddd272015-notedown.git"
+  },
+  "author": "Henrik Rosén <henriiik@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "angular2": "^2.0.0-alpha.13",
+    "del": "^1.1.1",
+    "es6-module-loader": "^0.16.1",
+    "gulp": "^3.8.11",
+    "rtts_assert": "^2.0.0-alpha.16",
+    "systemjs": "^0.16.4",
+    "traceur": "0.0.87"
+  }
+}

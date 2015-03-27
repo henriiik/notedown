@@ -16,8 +16,8 @@ A note-taking-site where a user create notes and keep them for themselves, share
 
 ### Client Framework
 
-- [Angular][angular]
-- [Babel.js][babel]
+- [Angular 2][angular]
+- [Traceur][traceur]
 
 ### Server framework
 
@@ -43,8 +43,8 @@ A note-taking-site where a user create notes and keep them for themselves, share
 - [Selenium][selenium]
 - [Protractor][protractor]
 
-[angular]: https://www.angularjs.org/
-[babel]: https://babeljs.io/
+[angular]: https://angular.io/
+[traceur]: https://github.com/google/traceur-compiler
 [django]: https://www.djangoproject.com/
 [django-rest-framework]: http://www.django-rest-framework.org/
 [django-orm]: https://docs.djangoproject.com/en/1.8/topics/db/
