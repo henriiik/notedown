@@ -1,14 +1,8 @@
-System.baseUrl = '/';
+import 'angular.js';
+import NoteDownController from 'controller.js';
 
-System.traceurOptions = {
-    annotations: true,
-    memberVariables: true,
-    typeAssertions: true,
-    typeAssertionModule: 'rtts_assert',
-    types: true
-};
+angular
+    .module('notedown', [])
+    .controller('NoteDownController', NoteDownController);
 
-System.import('greeter').then(function(m) {
-    var greeter = new m.Greeter('Hello, world!');
-    greeter.greet();
-});
+angular.bootstrap(document, ['notedown']);

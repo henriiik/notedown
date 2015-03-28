@@ -16,7 +16,7 @@ A note-taking-site where a user create notes and keep them for themselves, share
 
 ### Client Framework
 
-- [Angular 2][angular]
+- [Angular][angular]
 - [Traceur][traceur]
 
 ### Server framework
