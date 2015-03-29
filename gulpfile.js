@@ -6,7 +6,7 @@ var del = require('del');
 
 var paths = {
     app: [
-        'frontend/**/*'
+        'src/**/*'
     ],
     libs: [
         'node_modules/angular/angular.js',

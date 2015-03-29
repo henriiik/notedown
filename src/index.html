@@ -1,1 +1,24 @@
-hello world!
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Notedown!
+    </title>
+</head>
+<body>
+    <div ng-controller="NoteDownController as vm">
+        <p>
+            {{ vm.hello }}
+        </p>
+        <p>
+            {{ vm.test('omg! ') }}
+        </p>
+    </div>
+    <script type="text/javascript" src="system.js"></script>
+    <script type="text/javascript" src="traceur.js"></script>
+    <script>
+        System.baseUrl = '/';
+        System.import('app.js');
+    </script>
+</body>
+</html>
