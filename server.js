@@ -1,6 +1,12 @@
-var server = require('harp').server;
+var httpServer = require('http-server');
 
-server('build', {
-    ip: process.env.OPENSHIFT_NODEJS_IP,
-    port: process.env.OPENSHIFT_NODEJS_PORT
+var port = process.env.OPENSHIFT_NODEJS_PORT ? process.env.OPENSHIFT_NODEJS_PORT : 9000;
+var ip = process.env.OPENSHIFT_NODEJS_IP ? process.env.OPENSHIFT_NODEJS_IP : '0.0.0.0';
+
+var server = httpServer.createServer({
+    root: 'build'
+});
+
+server.listen(9000, '0.0.0.0', function () {
+    console.log('serving build-folder at ' + ip + ':' + port);
 });
