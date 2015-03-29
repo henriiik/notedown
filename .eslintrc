@@ -1,0 +1,45 @@
+{
+    "ecmaFeatures": {
+        "arrowFunctions": true,
+        "blockBindings": true,
+        "defaultParams": true,
+        "destructing": true,
+        "restParams": true,
+        "spread": true,
+        "templateStrings": true,
+        "modules": true
+    },
+    "env": {
+        "browser": true,
+        "node": true,
+        "jasmine": true,
+        "amd": true
+    },
+    "globals": {
+        "angular": false
+    },
+    "rules": {
+        "semi": [2, "always"],
+        "no-bitwise": 2,
+        "no-use-before-define": [2, "nofunc"],
+        "dot-notation": [2, {"allowKeywords": false}],
+        "quotes": [2, "single"],
+        "strict": [2, "function"],
+        "indent": [2, 4],
+        "brace-style": [2, "1tbs"],
+        "comma-style": [2, "last"],
+        "key-spacing": [2, {
+            "beforeColon": false,
+            "afterColon": true
+        }],
+        "no-multiple-empty-lines": [2, {
+            "max": 2
+        }],
+        "space-after-keywords": [2, "always"],
+        "space-before-blocks": [2, "always"],
+        "space-before-function-parentheses": [2, {"anonymous": "always", "named": "never"}],
+        "space-in-brackets": [2, "never"],
+        "space-in-parens": [2, "never"],
+        "max-len": [2, 80, 4]
+    }
+}
