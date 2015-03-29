@@ -49,9 +49,8 @@ them with other users or release them publicly.
 ### Week 1
 
 Got the frontend up and runnning with a small test page that loads a small
-angular app with systemjs and transpiles es6 in the browser. The result is
-unfortunately very slow, but should be better if compiled in a in the build
-process.
+angular app with systemjs and transpiles es6 in the browser. The result was at
+first very slow but after fixing the configuration it sped up quite a bit.
 
 Also got a openshift server running on [openshift online][openshift] since 
 https://openshift.ida.liu.se seems to be down. The system seems quite usable, 
