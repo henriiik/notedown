@@ -3,7 +3,8 @@
 ## Functional Specification
 
 ### Vision
-A note-taking-site where a user create notes and keep them for themselves, share them with other users or release them publicly. 
+A note-taking-site where a user create notes and keep them for themselves, share
+them with other users or release them publicly. 
 
 ### Core Features
 
@@ -43,6 +44,20 @@ A note-taking-site where a user create notes and keep them for themselves, share
 - [Selenium][selenium]
 - [Protractor][protractor]
 
+## Project Log
+
+### Week 1
+
+Got the frontend up and runnning with a small test page that loads a small
+angular app with systemjs and transpiles es6 in the browser. The result is
+unfortunately very slow, but should be better if compiled in a in the build
+process.
+
+Also got a openshift server running on [openshift online][openshift] since 
+https://openshift.ida.liu.se seems to be down. The system seems quite usable, 
+but the deploys take a lot of time.
+
+
 [angular]: https://angular.io/
 [traceur]: https://github.com/google/traceur-compiler
 [django]: https://www.djangoproject.com/
@@ -55,4 +70,4 @@ A note-taking-site where a user create notes and keep them for themselves, share
 [jasmine]: http://jasmine.github.io/
 [protractor]: http://angular.github.io/protractor/
 [selenium]: http://docs.seleniumhq.org/
-
+[openshift]: https://openshift.redhat.com
