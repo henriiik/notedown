@@ -1,5 +1,5 @@
-import 'angular.js';
-import NoteDownController from 'controller.js';
+import angular from 'angular';
+import NoteDownController from 'controller';
 
 angular
     .module('notedown', [])

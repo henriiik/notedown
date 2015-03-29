@@ -11,5 +11,5 @@ var server = httpServer.createServer({
 });
 
 server.listen(port, ip, function () {
-    console.log('serving build-folder at ' + ip + ':' + port);
+    console.log('serving ' + path + ' at http://' + ip + ':' + port);
 });

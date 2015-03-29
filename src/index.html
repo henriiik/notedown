@@ -13,12 +13,25 @@
         <p>
             {{ vm.test('omg! ') }}
         </p>
+        <p>
+            {{ vm.classTest.sayHello() }}
+        </p>
+        <p>
+            {{ vm.someObject.sayOne() }} 
+        </p>
+        <p>
+            {{ vm.someObject.sayOne(5) }} 
+        </p>
+        <p>
+            <button ng-click="vm.updateHello()">update!</button>
+            <button ng-click="vm.someObject.sayOne(132)">say something</button>
+            <button ng-click="vm.spreadFunction([1, 3, 2, 'hello'])">try spread</button>
+        </p>
     </div>
     <script type="text/javascript" src="system.js"></script>
-    <script type="text/javascript" src="traceur.js"></script>
+    <script type="text/javascript" src="config.js"></script>
     <script>
-        System.baseUrl = '/';
-        System.import('app.js');
+        System.import('app');
     </script>
 </body>
 </html>

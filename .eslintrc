@@ -7,16 +7,18 @@
         "restParams": true,
         "spread": true,
         "templateStrings": true,
-        "modules": true
+        "modules": true,
+        "classes": true,
+        "objectLiteralShorthandProperties": true,
+        "objectLiteralShorthandMethods": true
     },
     "env": {
         "browser": true,
-        "node": true,
-        "jasmine": true,
-        "amd": true
+        "node": true
     },
     "globals": {
-        "angular": false
+        "angular": false,
+        "System": false
     },
     "rules": {
         "semi": [2, "always"],
