@@ -10,6 +10,6 @@ var server = httpServer.createServer({
     root: path
 });
 
-server.listen(9000, '0.0.0.0', function () {
+server.listen(port, ip, function () {
     console.log('serving build-folder at ' + ip + ':' + port);
 });
