@@ -24,7 +24,7 @@
         "semi": [2, "always"],
         "no-bitwise": 2,
         "no-use-before-define": [2, "nofunc"],
-        "dot-notation": [2, {"allowKeywords": false}],
+        "dot-notation": 2,
         "quotes": [2, "single"],
         "strict": [2, "function"],
         "indent": [2, 4],
@@ -39,7 +39,10 @@
         }],
         "space-after-keywords": [2, "always"],
         "space-before-blocks": [2, "always"],
-        "space-before-function-parentheses": [2, {"anonymous": "always", "named": "never"}],
+        "space-before-function-parentheses": [2, {
+            "anonymous": "always",
+            "named": "never"
+        }],
         "space-in-brackets": [2, "never"],
         "space-in-parens": [2, "never"],
         "max-len": [2, 80, 4]
