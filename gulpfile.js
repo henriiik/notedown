@@ -2,6 +2,7 @@
 'use strict';
 
 var gulp = require('gulp');
+var eslint = require('gulp-eslint');
 var del = require('del');
 var Builder = require('systemjs-builder');
 
@@ -20,6 +21,13 @@ var paths = {
     ],
     build: 'build'
 };
+
+gulp.task('eslint', function () {
+    return gulp.src(paths.scripts)
+        .pipe(eslint())
+        .pipe(eslint.format())
+        .pipe(eslint.failOnError());
+});
 
 gulp.task('clean', function (callBack) {
     del(paths.build, callBack);
