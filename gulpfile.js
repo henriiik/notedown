@@ -12,7 +12,9 @@ var paths = {
         'src/**/*.jade'
     ],
     js: [
-        'src/**/*.js'
+        'src/**/*.js',
+        '!src/jspm_packages/**/*',
+        '!src/config.js'
     ],
     build: 'build'
 };
@@ -39,29 +41,24 @@ gulp.task('build:jade', function () {
 });
 
 gulp.task('build:js', function () {
-    return new Builder({
-            baseURL: 'src/',
-            paths: {
-                'angular': '../node_modules/angular/angular.js',
-                'traceur': '../node_modules/traceur/bin/traceur'
-            },
-            meta: {
-                'angular': {
-                    format: 'global',
-                    exports: 'angular'
-                }
-            }
-        })
-        .buildSFX('app', 'build/app.js', {
-            minify: true
-        })
+    var builder = new Builder();
+    return builder.loadConfig('./src/config.js')
         .then(function () {
-            console.log('Build complete');
-        })
-        .catch(function (err) {
-            console.log('Build error');
-            console.log(err);
+            builder.config({
+                baseURL: 'file:' + process.cwd() + '/src'
+            });
+
+            return builder.buildSFX('app', 'build/app.js', {
+                    minify: true
+                })
+                .then(function () {
+                    console.log('Build complete');
+                })
+                .catch(function (err) {
+                    console.log('Build error');
+                    console.log(err);
+                });
         });
 });
 
-gulp.task('build', ['build:js', 'build:jade'], function () {});
+gulp.task('build', ['build:js', 'build:jade']);

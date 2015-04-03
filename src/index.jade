@@ -18,7 +18,6 @@ body
     if production
         script(type="text/javascript" src="app.js")
     else
-        script(type="text/javascript" src="../node_modules/traceur/bin/traceur.js")
-        script(type="text/javascript" src="../node_modules/systemjs/node_modules/es6-module-loader/dist/es6-module-loader.js")
-        script(type="text/javascript" src="../node_modules/systemjs/dist/system.js")
+        script(type="text/javascript" src="jspm_packages/system.js")
+        script(type="text/javascript" src="config.js")
         script(type="text/javascript" src="bootstrap.js")
