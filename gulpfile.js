@@ -1,29 +1,24 @@
 /*eslint "strict": 0, "max-len": [2, 100, 4] */
 'use strict';
 
-var gulp = require('gulp');
-var eslint = require('gulp-eslint');
-var del = require('del');
 var Builder = require('systemjs-builder');
+var del = require('del');
+var eslint = require('gulp-eslint');
+var gulp = require('gulp');
+var jade = require('gulp-jade');
 
 var paths = {
-    html: [
-        'src/**/*.html'
+    jade: [
+        'src/**/*.jade'
     ],
-    scripts: [
+    js: [
         'src/**/*.js'
-    ],
-    libs: [
-        'node_modules/angular/angular.js',
-        'node_modules/traceur/bin/traceur.js',
-        'node_modules/systemjs/dist/system*.js*',
-        'node_modules/systemjs/node_modules/es6-module-loader/dist/es6-module-loader*.js*'
     ],
     build: 'build'
 };
 
-gulp.task('eslint', function () {
-    return gulp.src(paths.scripts)
+gulp.task('lint', function () {
+    return gulp.src(paths.js)
         .pipe(eslint())
         .pipe(eslint.format())
         .pipe(eslint.failOnError());
@@ -33,30 +28,17 @@ gulp.task('clean', function (callBack) {
     del(paths.build, callBack);
 });
 
-gulp.task('copy:html', function () {
-    return gulp.src(paths.html)
+gulp.task('build:jade', function () {
+    return gulp.src(paths.jade)
+        .pipe(jade({
+            locals: {
+                production: true
+            }
+        }))
         .pipe(gulp.dest(paths.build));
 });
 
-gulp.task('copy:scripts', function () {
-    return gulp.src(paths.scripts)
-        .pipe(gulp.dest(paths.build));
-});
-
-gulp.task('copy:libs', function () {
-    return gulp.src(paths.libs)
-        .pipe(gulp.dest(paths.build));
-});
-
-gulp.task('copy', ['copy:scripts', 'copy:html', 'copy:libs']);
-
-gulp.task('watch', ['copy'], function () {
-    gulp.watch(paths.scripts, ['copy:scripts']);
-    gulp.watch(paths.html, ['copy:html']);
-    gulp.watch(paths.libs, ['copy:libs']);
-});
-
-gulp.task('build', ['copy:html'], function () {
+gulp.task('build:js', function () {
     return new Builder({
             baseURL: 'src/',
             paths: {
@@ -70,7 +52,7 @@ gulp.task('build', ['copy:html'], function () {
                 }
             }
         })
-        .buildSFX('app', 'build/bootstrap.js', {
+        .buildSFX('app', 'build/app.js', {
             minify: true
         })
         .then(function () {
@@ -81,3 +63,5 @@ gulp.task('build', ['copy:html'], function () {
             console.log(err);
         });
 });
+
+gulp.task('build', ['build:js', 'build:jade'], function () {});

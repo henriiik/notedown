@@ -21,6 +21,8 @@
     "del": "^1.1.1",
     "gulp": "^3.8.11",
     "gulp-eslint": "^0.8.0",
+    "gulp-jade": "^1.0.0",
+    "harp": "^0.15.2",
     "http-server": "^0.8.0",
     "systemjs": "^0.16.6",
     "systemjs-builder": "^0.10.3",
