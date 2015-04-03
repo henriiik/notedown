@@ -23,8 +23,7 @@
     "gulp-jade": "^1.0.0",
     "harp": "^0.15.2",
     "http-server": "^0.8.0",
-    "jspm": "^0.15.1",
-    "systemjs-builder": "^0.10.3"
+    "jspm": "^0.15.1"
   },
   "private": true,
   "jspm": {

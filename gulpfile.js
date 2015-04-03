@@ -1,11 +1,11 @@
 /*eslint "strict": 0, "max-len": [2, 100, 4] */
 'use strict';
 
-var Builder = require('systemjs-builder');
 var del = require('del');
 var eslint = require('gulp-eslint');
 var gulp = require('gulp');
 var jade = require('gulp-jade');
+var jspm = require('jspm');
 
 var paths = {
     jade: [
@@ -41,24 +41,11 @@ gulp.task('build:jade', function () {
 });
 
 gulp.task('build:js', function () {
-    var builder = new Builder();
-    return builder.loadConfig('./src/config.js')
-        .then(function () {
-            builder.config({
-                baseURL: 'file:' + process.cwd() + '/src'
-            });
-
-            return builder.buildSFX('notedown.module', 'build/notedown.js', {
-                    minify: true
-                })
-                .then(function () {
-                    console.log('Build complete');
-                })
-                .catch(function (err) {
-                    console.log('Build error');
-                    console.log(err);
-                });
-        });
+    return jspm.bundleSFX('notedown.module', 'build/notedown.js', {
+        minify: true,
+        mangle: true,
+        sourceMaps: false
+    });
 });
 
 gulp.task('build', ['build:js', 'build:jade']);
