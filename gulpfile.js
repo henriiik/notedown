@@ -48,7 +48,7 @@ gulp.task('build:js', function () {
                 baseURL: 'file:' + process.cwd() + '/src'
             });
 
-            return builder.buildSFX('app', 'build/app.js', {
+            return builder.buildSFX('notedown.module', 'build/notedown.js', {
                     minify: true
                 })
                 .then(function () {
