@@ -3,15 +3,15 @@
 ## Functional Specification
 
 ### Vision
-A note-taking-site where a user create notes and keep them for themselves, share
-them with other users or release them publicly. 
+A note-taking-site where a user create notes and keep them for themselves,
+share them with other users or release them publicly. 
 
 ### Core Features
 
 - Create account with oauth from google.
 - Create, edit and destroy notes.
 - Share notes with other users or publicly.
-- Live markdown preview (when editing)!
+- Live markdown preview when editing!
 
 ## Technical Specification
 
@@ -43,6 +43,58 @@ them with other users or release them publicly.
 ### E2E-testing
 - [Selenium][selenium]
 - [Protractor][protractor]
+
+## How to use this project
+
+### Setup
+
+Start by installing node modules.
+
+```sh
+npm install
+```
+
+For ease of access you can also install gulp-cli and harp globally.
+
+```sh
+npm install gulp-cli harp --global
+```
+
+### Running the dev environment
+
+Just run the harp server from the project root.
+
+```sh
+harp server
+```
+
+Then point your browser to http://localhost:9000/src/ and you're ready to go.
+
+### Building the project for production
+
+Run the gulp command for building.
+
+```sh
+gulp build
+```
+
+And then the production server
+
+```
+node server.js
+```
+
+### Linting
+
+Run the gulp command for linting.
+
+```sh
+gulp lint
+```
+
+The js files in the src folder are run though eslint. This command is suitable
+for a git pre-commit hook, to make sure oyu don't commit code that isn't
+formatted.
 
 ## Project Log
 
