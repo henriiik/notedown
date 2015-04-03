@@ -4,8 +4,6 @@ var port = process.env.OPENSHIFT_NODEJS_PORT || 9000;
 var ip = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 var path = './build';
 
-console.log(port, ip, path);
-
 var server = httpServer.createServer({
     root: path
 });
