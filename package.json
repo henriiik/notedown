@@ -4,8 +4,7 @@
   "description": "A project for the course TDDD27 Advanced Web Programming.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "jspm install"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
     "node": ">= 0.6.0",
