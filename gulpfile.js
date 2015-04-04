@@ -17,6 +17,10 @@ var paths = {
         'src/**/*.jade'
     ],
     js: [
+        'karma.conf.js',
+        'protractor.conf.js',
+        'gulpfile.js',
+        'server.js',
         'src/app/**/*.js'
     ],
     build: 'build'
