@@ -9,8 +9,7 @@
     "start": "node server.js",
     "build": "jspm install; gulp clean; gulp build",
     "update-webdriver": "webdriver-manager update",
-    "protractor": "protractor",
-    "postinstall": "jspm install"
+    "protractor": "protractor"
   },
   "engines": {
     "node": ">= 0.6.0",
