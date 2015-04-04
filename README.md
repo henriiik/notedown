@@ -60,6 +60,7 @@ Start by installing node modules and the jspm packages.
 
 ```sh
 npm install
+jspm install
 ```
 
 ### Running the dev environment
