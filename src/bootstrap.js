@@ -1,1 +1,1 @@
-System.import('notedown.module');
+System.import('app/notedown.module');

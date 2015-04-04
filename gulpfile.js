@@ -12,9 +12,7 @@ var paths = {
         'src/**/*.jade'
     ],
     js: [
-        'src/**/*.js',
-        '!src/jspm_packages/**/*',
-        '!src/config.js'
+        'src/app/**/*.js'
     ],
     build: 'build'
 };
@@ -41,7 +39,7 @@ gulp.task('build:jade', function () {
 });
 
 gulp.task('build:js', function () {
-    return jspm.bundleSFX('notedown.module', 'build/notedown.js', {
+    return jspm.bundleSFX('app/notedown.module', 'build/notedown.js', {
         minify: true,
         mangle: true,
         sourceMaps: false

@@ -35,3 +35,4 @@ export default function NoteDownController() {
 
     this.classTest = new HelloClass('world');
 }
+
