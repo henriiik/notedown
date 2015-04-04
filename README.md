@@ -18,6 +18,7 @@ share them with other users or release them publicly.
 ### Client Framework
 
 - [Angular][angular]
+- [SystemJS][systemjs] / [jspm][jspm]
 - [Traceur][traceur]
 
 ### Server framework
@@ -48,16 +49,17 @@ share them with other users or release them publicly.
 
 ### Setup
 
-Start by installing node modules.
+For ease of access you should install the following globally, otherwise most of
+the commands will have to be run from 'node_modules/.bin/'
+
+```sh
+npm install karma-cli gulp-cli jspm harp --global
+```
+
+Start by installing node modules and the jspm packages.
 
 ```sh
 npm install
-```
-
-For ease of access you can also install gulp-cli and harp globally.
-
-```sh
-npm install gulp-cli harp --global
 ```
 
 ### Running the dev environment
@@ -67,6 +69,8 @@ http://localhost:9000/src/ and you're ready to go.
 
 ```sh
 harp server .src/
+- or -
+npm run dev
 ```
 
 ### Building the project for production
@@ -75,12 +79,14 @@ Run the gulp command for building.
 
 ```sh
 gulp build
+- or -
+npm run build
 ```
 
 And then the production server
 
 ```
-node server.js
+npm run start
 ```
 
 ### Linting
@@ -92,14 +98,36 @@ eslint.
 gulp lint
 ```
 
+### Unit tests
 
-
-### Testing
-
-The gulp command for testing runs all the karma unittests.
+The gulp command for unit testing runs all the karma unittests.
 
 ```sh
 gulp test
+- or -
+npm run test
+```
+
+### End-to-end tests
+
+First update the webdriver.
+
+```sh
+npm run update-webdriver
+```
+
+Then run either the dev or production server
+
+```sh
+npm run dev
+- or -
+npm run start
+```
+
+Then you can run the protractor tests.
+
+```sh
+npm run protractor
 ```
 
 ### Pre-commit
@@ -127,6 +155,8 @@ but the deploys take a lot of time.
 
 [angular]: https://angular.io/
 [traceur]: https://github.com/google/traceur-compiler
+[SystemJS]: https://github.com/systemjs/systemjs
+[jspm]: http://jspm.io/
 [django]: https://www.djangoproject.com/
 [django-rest-framework]: http://www.django-rest-framework.org/
 [django-orm]: https://docs.djangoproject.com/en/1.8/topics/db/

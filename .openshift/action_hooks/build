@@ -1,8 +1,5 @@
 #!/bin/bash
 
 cd $OPENSHIFT_REPO_DIR
-
 export HOME=$OPENSHIFT_DATA_DIR
-node_modules/.bin/jspm install
-node_modules/.bin/gulp clean
-node_modules/.bin/gulp build
+npm run build

@@ -4,8 +4,13 @@
   "description": "A project for the course TDDD27 Advanced Web Programming.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "gulp test",
+    "dev": "harp server ./src",
+    "start": "node server.js",
+    "build": "jspm install; gulp clean; gulp build",
+    "update-webdriver": "webdriver-manager update",
+    "protractor": "protractor",
+    "postinstall": "jspm install"
   },
   "engines": {
     "node": ">= 0.6.0",
