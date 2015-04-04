@@ -6,6 +6,8 @@ var eslint = require('gulp-eslint');
 var gulp = require('gulp');
 var jade = require('gulp-jade');
 var jspm = require('jspm');
+var karma = require('karma').server;
+var path = require('path');
 
 var paths = {
     jade: [
@@ -23,6 +25,14 @@ gulp.task('lint', function () {
         .pipe(eslint.format())
         .pipe(eslint.failOnError());
 });
+
+gulp.task('test', function (done) {
+    karma.start({
+        configFile: path.join(__dirname, 'karma.conf.js')
+    }, done);
+});
+
+gulp.task('pre-commit', ['test', 'lint']);
 
 gulp.task('clean', function (callBack) {
     del(paths.build, callBack);

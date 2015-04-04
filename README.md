@@ -62,13 +62,12 @@ npm install gulp-cli harp --global
 
 ### Running the dev environment
 
-Just run the harp server from the project root.
+Run the harp server and target the src folder, then point your browser to
+http://localhost:9000/src/ and you're ready to go.
 
 ```sh
-harp server
+harp server .src/
 ```
-
-Then point your browser to http://localhost:9000/src/ and you're ready to go.
 
 ### Building the project for production
 
@@ -86,15 +85,32 @@ node server.js
 
 ### Linting
 
-Run the gulp command for linting.
+The gulp command for linting runs all js files in the src/app folder through
+eslint. 
 
 ```sh
 gulp lint
 ```
 
-The js files in the src folder are run though eslint. This command is suitable
-for a git pre-commit hook, to make sure oyu don't commit code that isn't
-formatted.
+
+
+### Testing
+
+The gulp command for testing runs all the karma unittests.
+
+```sh
+gulp test
+```
+
+### Pre-commit
+
+The pre-commit gulp command runs the lint and test commands, and is suitable
+for using in a git pre-commit hook, to make sure you dont commit ugly or broken
+code.
+
+```sh
+gulp pre-commit
+```
 
 ## Project Log
 
