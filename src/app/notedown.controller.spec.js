@@ -1,12 +1,12 @@
-import 'angular-mocks'
+import mock from 'angular-mocks'
 
 describe('NoteDownController', function () {
     var NoteDownController;
 
     beforeEach(function () {
-        module('notedown');
+        mock.module('notedown');
 
-        inject(function ($controller) {
+        mock.inject(function ($controller) {
             NoteDownController = $controller('NoteDownController');
         });
     });
