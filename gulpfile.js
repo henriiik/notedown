@@ -2,12 +2,15 @@
 'use strict';
 
 var del = require('del');
-var eslint = require('gulp-eslint');
 var gulp = require('gulp');
 var jade = require('gulp-jade');
 var jspm = require('jspm');
-var karma = require('karma').server;
 var path = require('path');
+
+if (!process.env.NPM_CONFIG_PRODUCTION) {
+    var eslint = require('gulp-eslint');
+    var karma = require('karma').server;
+}
 
 var paths = {
     jade: [
