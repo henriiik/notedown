@@ -1,4 +1,4 @@
-export default function NoteDownController() {
+export default function NoteDownController($window, $http) {
     this.hello = 'NoteDown!';
     this.test = x => x + this.hello;
     this.restFunction = (...y) => {
@@ -34,5 +34,11 @@ export default function NoteDownController() {
     }
 
     this.classTest = new HelloClass('world');
-}
 
+    // $http.get('http://cors.enhenrik.nu:8000/users/')
+    $http.get('http://python-enhenrik.rhcloud.com/users/')
+        .success(users => this.users = users)
+        .success((data, status, headers, config) => {
+            console.log(data, status, headers, config);
+        });
+}

@@ -27,10 +27,13 @@ body(layout="column")
             md-card-content
                 p {{ vm.someObject.sayOne(5) }} 
         md-card
-            md-card-content(layout="row", layout-align="space-around center")
-                md-button(class="md-raised md-primary", ng-click="vm.updateHello()") update!
-                md-button(class="md-raised md-primary", ng-click="vm.someObject.sayOne(132)") say something
-                md-button(class="md-raised md-primary", ng-click="vm.spreadFunction([1, 3, 2, 'hello'])") try spread
+            md-card-content
+                p {{ vm.users }} 
+        md-card
+            md-card-content(layout="row" layout-align="space-around center")
+                md-button(class="md-raised md-primary" ng-click="vm.updateHello()") update!
+                md-button(class="md-raised md-primary" ng-click="vm.someObject.sayOne(132)") say something
+                md-button(class="md-raised md-primary" ng-click="vm.spreadFunction([1, 3, 2, 'hello'])") try spread
     if production
         script(type="text/javascript" src="notedown.js")
     else
