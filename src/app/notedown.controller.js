@@ -1,3 +1,5 @@
+NoteDownController.$inject = ['$window', '$http'];
+
 export default function NoteDownController($window, $http) {
     this.hello = 'NoteDown!';
     this.test = x => x + this.hello;
