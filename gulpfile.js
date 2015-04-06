@@ -23,7 +23,7 @@ var paths = {
         'server.js',
         'src/app/**/*.js'
     ],
-    build: 'build'
+    build: 'frontend/build'
 };
 
 gulp.task('lint', function () {
@@ -56,7 +56,7 @@ gulp.task('build:jade', function () {
 });
 
 gulp.task('build:js', function () {
-    return jspm.bundleSFX('app/notedown.module', 'build/notedown.js', {
+    return jspm.bundleSFX('app/notedown.module', paths.build + '/notedown.js', {
         minify: true,
         mangle: true,
         sourceMaps: false

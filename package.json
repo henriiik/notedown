@@ -19,8 +19,11 @@
     "type": "git",
     "url": "git@gitlab.ida.liu.se:henro843/tddd272015-notedown.git"
   },
-  "author": "Henrik Rosén <henriiik@gmail.com>",
-  "license": "MIT",
+  "author": {
+    "name": "Henrik Rosén",
+    "email": "henriiik@gmail.com",
+    "url": "http://www.enhenrik.nu"
+  },
   "dependencies": {
     "del": "^1.1.1",
     "gulp": "^3.8.11",
