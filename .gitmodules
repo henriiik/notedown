@@ -1,3 +1,6 @@
 [submodule "frontend"]
 	path = frontend
 	url = git@gitlab.ida.liu.se:henro843/tddd272015-notedown-frontend.git
+[submodule "backend"]
+	path = backend
+	url = git@gitlab.ida.liu.se:henro843/tddd272015-notedown-backend.git
