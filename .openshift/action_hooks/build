@@ -1,5 +1,0 @@
-#!/bin/bash
-
-cd $OPENSHIFT_REPO_DIR
-export HOME=$OPENSHIFT_DATA_DIR
-npm run build
