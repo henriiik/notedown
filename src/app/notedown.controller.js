@@ -38,7 +38,7 @@ export default function NoteDownController($window, $http) {
     this.classTest = new HelloClass('world');
 
     // $http.get('http://cors.enhenrik.nu:8000/users/')
-    $http.get('https://python-enhenrik.rhcloud.com/users/')
+    $http.get('https://backend-enhenrik.rhcloud.com/users/')
         .success(users => this.users = users)
         .success((data, status, headers, config) => {
             console.log(data, status, headers, config);
