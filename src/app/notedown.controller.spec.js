@@ -15,7 +15,7 @@ describe('NoteDownController', function () {
         expect(NoteDownController).toBeDefined();
     });
 
-    it('should say NoteDown!', function () {
-        expect(NoteDownController.hello).toEqual('NoteDown!');
+    it('should have get users function', function () {
+        expect(NoteDownController.getUsers).toBeDefined();
     });
 });

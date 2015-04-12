@@ -1,46 +1,40 @@
-NoteDownController.$inject = ['$window', '$http'];
+NoteDownController.$inject = ['$window', '$http', '$log'];
 
-export default function NoteDownController($window, $http) {
-    this.hello = 'NoteDown!';
-    this.test = x => x + this.hello;
-    this.restFunction = (...y) => {
-        console.log(`y: ${y}`);
-    };
+export default function NoteDownController($window, $http, $log) {
+    var vm = this,
+        // apiUrl = 'http://cors.enhenrik.nu:8000';
+        apiUrl = 'https://backend-henro843.openshift.ida.liu.se';
 
-    this.spreadFunction = (y) => {
-        console.log(`y: ${y}`);
-        this.restFunction(y, ...y);
-    };
+    vm.getUsers = getUsers;
+    vm.signIn = signIn;
 
-    var one = 1;
+    function getUsers() {
+        $http.get(apiUrl + '/users/')
+            .success(users => vm.users = users);
+    }
 
-    this.someObject = {
-        one,
-        sayOne(x=2) {
-            return `${this.one} + ${this.one} = ${x}`;
-        }
-    };
-
-    this.updateHello = () => {
-        this.hello = this.test('test! ');
-    };
-
-    class HelloClass {
-        constructor(message) {
-            this.message = message;
-        }
-
-        sayHello() {
-            return `hello ${this.message} !`;
+    function signIn() {
+        $log.info('signIn!');
+        if ($window.auth2) {
+            $window.auth2.grantOfflineAccess({
+                'redirect_uri': 'postmessage'
+            }).then(signInCallback);
+        } else {
+            $log.info('too soon!');
         }
     }
 
-    this.classTest = new HelloClass('world');
-
-    // $http.get('http://cors.enhenrik.nu:8000/users/')
-    $http.get('https://backend-henro843.openshift.ida.liu.se/users/')
-        .success(users => this.users = users)
-        .success((data, status, headers, config) => {
-            console.log(data, status, headers, config);
-        });
+    function signInCallback(response) {
+        $log.info('signInCallback!');
+        vm.code = response.code;
+        $http
+            .post(apiUrl + '/login/', {
+                code: vm.code
+            })
+            .success((data) => {
+                vm.token = data.token;
+                getUsers();
+            });
+        return false;
+    }
 }

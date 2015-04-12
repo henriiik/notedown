@@ -34,7 +34,7 @@ share them with other users or release them publicly.
 ### Authentication
 
 - [OAuth][oauth]
-- [Google OAuth][google-oauth]
+- [Google Sign-In][google-sign-in]
 
 ### Unittesting
 
@@ -163,7 +163,7 @@ but the deploys take a lot of time.
 [django-orm]: https://docs.djangoproject.com/en/1.8/topics/db/
 [postgresql]: http://www.postgresql.org/
 [oauth]: http://oauth.net/2/
-[google-oauth]: https://developers.google.com/accounts/docs/OAuth2/
+[google-sign-in]: https://developers.google.com/identity/sign-in/
 [karma]: http://karma-runner.github.io/0.12/index.html
 [jasmine]: http://jasmine.github.io/
 [protractor]: http://angular.github.io/protractor/
