@@ -3,8 +3,9 @@ NoteDownController.$inject = ['$window', '$http', '$log'];
 export default function NoteDownController($window, $http, $log) {
     var vm = this,
         // apiUrl = 'http://cors.enhenrik.nu:8000';
-        apiUrl = 'https://backend-henro843.openshift.ida.liu.se';
+        apiUrl = 'http://backend-henro843.openshift.ida.liu.se';
 
+    vm.users = [];
     vm.getUsers = getUsers;
     vm.signIn = signIn;
 

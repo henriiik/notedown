@@ -2,26 +2,27 @@ doctype html
 html(ng-app="notedown")
     head
         title Notedown!
-body(layout="column")
-    md-content(ng-controller="NoteDownController as vm")
-        md-toolbar(layout="row")
-            div(class="md-toolbar-tools")
-                span Notedown!
+        style.
+            body {
+                color: white;
+            }
+            .md-display-4 {
+                font-size: 11.2rem;
+                font-weight: 300;
+                letter-spacing: -0.01em;
+                line-height: 11.2rem;
+            }
+body(layout="row" layout-align="space-around start")
+    md-content(ng-controller="NoteDownController as vm" layout="column" style="max-width:900px;")
+        div(layout="column" layout-align="space-around center")
+            h1.md-display-4 Notedown!
+            md-button(class="md-raised md-primary" ng-click="vm.signIn()" ng-hide="vm.token") Sign in with Google
         md-card(ng-repeat="user in vm.users")
             md-card-content
                 p(ng-bind="user.username")
                 p(ng-bind="user.first_name")
                 p(ng-bind="user.last_name")
                 p(ng-bind="user.email")
-        md-card
-            md-card-content
-                p Code:
-                p(ng-bind="vm.code") 
-                p Token:
-                p(ng-bind="vm.token") 
-        md-card
-            md-card-content(layout="row" layout-align="space-around center")
-                md-button(class="md-raised md-primary" ng-click="vm.signIn()") Sign in with Google
     if production
         script(type="text/javascript" src="https://apis.google.com/js/client:platform.js?onload=start" async defer)
         script(type="text/javascript" src="auth.js")

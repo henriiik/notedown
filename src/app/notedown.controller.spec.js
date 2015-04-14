@@ -1,4 +1,4 @@
-import mock from 'angular-mocks'
+import mock from 'angular-mocks';
 
 describe('NoteDownController', function () {
     var NoteDownController;
