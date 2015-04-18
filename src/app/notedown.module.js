@@ -1,7 +1,7 @@
 import 'angular';
 import 'angular-material';
 import 'angular-resource';
-import NoteDownController from 'app/notedown.controller';
+import NotedownController from 'app/notedown.controller';
 import ndAuth from 'app/auth.service';
 import Note from 'app/note.service';
 
@@ -14,4 +14,4 @@ angular
     .constant('apiUrl', 'http://backend-henro843.openshift.ida.liu.se')
     .factory('Note', Note)
     .factory('ndAuth', ndAuth)
-    .controller('NoteDownController', NoteDownController);
+    .controller('NotedownController', NotedownController);

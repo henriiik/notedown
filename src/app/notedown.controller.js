@@ -1,6 +1,6 @@
-NoteDownController.$inject = ['$http', '$log', 'apiUrl', 'Note', 'ndAuth'];
+NotedownController.$inject = ['$http', '$log', 'apiUrl', 'Note', 'ndAuth'];
 
-export default function NoteDownController($http, $log, apiUrl, Note, ndAuth) {
+export default function NotedownController($http, $log, apiUrl, Note, ndAuth) {
     var vm = this;
 
     vm.notes = [];

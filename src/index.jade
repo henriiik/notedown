@@ -16,7 +16,7 @@ html(ng-app="notedown")
                 line-height: 11.2rem;
             }
 body(layout="row" layout-align="space-around start")
-    md-content(ng-controller="NoteDownController as vm" layout="column" style="max-width:800px;")
+    md-content(ng-controller="NotedownController as vm" layout="column" style="max-width:800px;")
         div(layout="column" layout-align="space-around center")
             h1.md-display-4 Notedown!
         md-card(ng-hide="vm.token" ng-cloak)
