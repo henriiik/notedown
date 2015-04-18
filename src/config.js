@@ -13,6 +13,8 @@ System.config({
     "angular-material": "github:angular/bower-material@0.8.3",
     "angular-mocks": "github:angular/bower-angular-mocks@1.3.15",
     "angular-resource": "github:angular/bower-angular-resource@1.3.15",
+    "angular-sanitize": "github:angular/bower-angular-sanitize@1.3.15",
+    "showdown": "github:showdownjs/showdown@0.4.0",
     "traceur": "github:jmcriffey/bower-traceur@0.0.87",
     "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.87",
     "github:angular/bower-angular-animate@1.3.15": {
@@ -22,6 +24,9 @@ System.config({
       "angular": "github:angular/bower-angular@1.3.15"
     },
     "github:angular/bower-angular-mocks@1.3.15": {
+      "angular": "github:angular/bower-angular@1.3.15"
+    },
+    "github:angular/bower-angular-sanitize@1.3.15": {
       "angular": "github:angular/bower-angular@1.3.15"
     },
     "github:angular/bower-material@0.8.3": {

@@ -24,7 +24,7 @@ body(layout="row" layout-align="space-around start")
                 md-button(ng-click="vm.signIn()") Sign in with Google
         md-card(ng-repeat="note in vm.notes" ng-cloak)
             md-card-content
-                p(ng-bind="note.content")
+                p(ng-bind-html="note.getHtml()")
                 p
                     span(ng-bind="note.user.email")
                     span(ng-bind="note.edited | date : ' \@ yyyy-MM-dd HH:mm'")

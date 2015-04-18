@@ -28,5 +28,4 @@ export default function NotedownController($http, $log, apiUrl, Note, ndAuth) {
         $http.get(apiUrl + '/users/')
             .success(users => vm.users = users);
     }
-
 }
