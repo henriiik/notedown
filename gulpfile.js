@@ -71,9 +71,4 @@ gulp.task('build:js', function () {
     });
 });
 
-gulp.task('build:auth', function () {
-    return gulp.src('src/app/auth.js')
-            .pipe(gulp.dest(paths.build));
-});
-
-gulp.task('build', ['build:js', 'build:jade', 'build:auth']);
+gulp.task('build', ['build:js', 'build:jade']);
