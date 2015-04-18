@@ -1,21 +1,21 @@
 import mock from 'angular-mocks';
 
-describe('ndAuth', function () {
-    var ndAuth;
+describe('auth', function () {
+    var auth;
 
     beforeEach(function () {
         mock.module('notedown');
 
-        mock.inject(function (_ndAuth_) {
-            ndAuth = _ndAuth_;
+        mock.inject(function (_auth_) {
+            auth = _auth_;
         });
     });
 
     it('should be defined', function () {
-        expect(ndAuth).toBeDefined();
+        expect(auth).toBeDefined();
     });
 
     it('should have query function', function () {
-        expect(ndAuth.subscribe).toBeDefined();
+        expect(auth.subscribe).toBeDefined();
     });
 });

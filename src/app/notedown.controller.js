@@ -1,6 +1,6 @@
-NotedownController.$inject = ['$http', '$log', 'apiUrl', 'Note', 'ndAuth'];
+NotedownController.$inject = ['$http', '$log', 'apiUrl', 'Note', 'auth'];
 
-export default function NotedownController($http, $log, apiUrl, Note, ndAuth) {
+export default function NotedownController($http, $log, apiUrl, Note, auth) {
     var vm = this;
 
     vm.notes = [];
@@ -11,9 +11,9 @@ export default function NotedownController($http, $log, apiUrl, Note, ndAuth) {
     ///////////
 
     function activate() {
-        ndAuth.subscribe(setToken);
+        auth.subscribe(setToken);
         vm.notes = Note.query();
-        vm.signIn = ndAuth.signIn;
+        vm.signIn = auth.signIn;
     }
 
     function setToken(token) {

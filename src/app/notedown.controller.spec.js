@@ -13,7 +13,7 @@ describe('NotedownController', function () {
         spyOn(mockAuth, 'subscribe').and.callThrough();
 
         mock.module(function ($provide) {
-            $provide.value('ndAuth', mockAuth);
+            $provide.value('auth', mockAuth);
         });
 
         mock.inject(function ($controller) {
@@ -35,7 +35,7 @@ describe('NotedownController', function () {
         expect(NotedownController.notes.length).toBe(0);
     });
 
-    it('should subscribe to ndAuth service', function () {
+    it('should subscribe to auth service', function () {
         expect(mockAuth.subscribe).toHaveBeenCalled();
     });
 

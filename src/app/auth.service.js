@@ -1,6 +1,6 @@
-ndAuth.$inject = ['$window', '$http', '$log', 'apiUrl'];
+auth.$inject = ['$window', '$http', '$log', 'apiUrl'];
 
-export default function ndAuth($window, $http, $log, apiUrl) {
+export default function auth($window, $http, $log, apiUrl) {
     var token;
     var code;
     var subscribers = [];

@@ -8,7 +8,7 @@ import 'angular-sanitize';
 import Showdown from 'showdown';
 
 // Notedown
-import ndAuth from 'app/auth.service';
+import auth from 'app/auth.service';
 import markdown from 'app/markdown.service';
 import Note from 'app/note.service';
 import NotedownController from 'app/notedown.controller';
@@ -23,6 +23,6 @@ angular
     .constant('apiUrl', 'http://backend-henro843.openshift.ida.liu.se')
     .constant('Showdown', Showdown)
     .factory('Note', Note)
-    .factory('ndAuth', ndAuth)
+    .factory('auth', auth)
     .factory('markdown', markdown)
     .controller('NotedownController', NotedownController);
