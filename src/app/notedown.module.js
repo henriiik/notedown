@@ -12,6 +12,7 @@ import auth from 'app/auth.service';
 import markdown from 'app/markdown.service';
 import Note from 'app/note.service';
 import NotedownController from 'app/notedown.controller';
+import User from 'app/user.service';
 
 angular
     .module('notedown', [
@@ -22,7 +23,8 @@ angular
     // .constant('apiUrl', 'http://cors.enhenrik.nu:8000')
     .constant('apiUrl', 'http://backend-henro843.openshift.ida.liu.se')
     .constant('Showdown', Showdown)
-    .factory('Note', Note)
     .factory('auth', auth)
     .factory('markdown', markdown)
+    .factory('Note', Note)
+    .factory('User', User)
     .controller('NotedownController', NotedownController);
