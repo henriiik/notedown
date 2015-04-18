@@ -39,6 +39,14 @@ gulp.task('test', function (done) {
     }, done);
 });
 
+gulp.task('tdd', function (done) {
+    karma.start({
+        configFile: path.join(__dirname, 'karma.conf.js'),
+        singleRun: false,
+        autoWatch: true
+    }, done);
+});
+
 gulp.task('pre-commit', ['test', 'lint']);
 
 gulp.task('clean', function (callBack) {
