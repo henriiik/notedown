@@ -1,18 +1,27 @@
-NoteDownController.$inject = ['$window', '$http', '$log', 'apiUrl', 'Note'];
+NoteDownController.$inject = ['$http', '$log', 'apiUrl', 'Note', 'ndAuth'];
 
-export default function NoteDownController($window, $http, $log, apiUrl, Note) {
+export default function NoteDownController($http, $log, apiUrl, Note, ndAuth) {
     var vm = this;
 
     vm.notes = [];
-    vm.getUsers = getUsers;
-    vm.signIn = signIn;
+    vm.users = [];
 
     activate();
 
     ///////////
 
     function activate() {
+        ndAuth.subscribe(setToken);
         vm.notes = Note.query();
+        vm.signIn = ndAuth.signIn;
+    }
+
+    function setToken(token) {
+        vm.token = token;
+        $log.info('token set!', vm.token);
+        if (token) {
+            getUsers();
+        }
     }
 
     function getUsers() {
@@ -20,28 +29,4 @@ export default function NoteDownController($window, $http, $log, apiUrl, Note) {
             .success(users => vm.users = users);
     }
 
-    function signIn() {
-        $log.info('signIn!');
-        if ($window.auth2) {
-            $window.auth2.grantOfflineAccess({
-                'redirect_uri': 'postmessage'
-            }).then(signInCallback);
-        } else {
-            $log.info('too soon!');
-        }
-    }
-
-    function signInCallback(response) {
-        $log.info('signInCallback!');
-        vm.code = response.code;
-        $http
-            .post(apiUrl + '/login/', {
-                code: vm.code
-            })
-            .success((data) => {
-                vm.token = data.token;
-                getUsers();
-            });
-        return false;
-    }
 }
