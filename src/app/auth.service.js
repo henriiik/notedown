@@ -22,6 +22,7 @@ export default function auth($window, $http, $log, $timeout, apiUrl) {
     function activate() {
         loadAuth2();
         token = localStorage.getItem('token');
+        publish(token);
     }
 
     function loadAuth2() {
@@ -49,8 +50,10 @@ export default function auth($window, $http, $log, $timeout, apiUrl) {
     function publish(newToken) {
         if (newToken) {
             localStorage.setItem('token', newToken);
+            $http.defaults.headers.common.Authorization = 'Token ' + newToken;
         } else {
             localStorage.removeItem('token');
+            delete $http.defaults.headers.common.Authorization;
         }
         token = newToken;
         angular.forEach(subscribers, publishTo);

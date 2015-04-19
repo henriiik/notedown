@@ -9,6 +9,7 @@ import Showdown from 'showdown';
 
 // Notedown
 import auth from 'app/auth.service';
+import config from 'app/notedown.config';
 import markdown from 'app/markdown.service';
 import Note from 'app/note.service';
 import NotedownController from 'app/notedown.controller';
@@ -20,6 +21,7 @@ angular
         'ngResource',
         'ngSanitize'
     ])
+    .config(config)
     // .constant('apiUrl', 'http://cors.enhenrik.nu:8000')
     .constant('apiUrl', 'http://backend-henro843.openshift.ida.liu.se')
     .constant('Showdown', Showdown)
