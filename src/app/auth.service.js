@@ -1,10 +1,11 @@
 /* globals gapi */
-/*eslint camelcase: 0, max-len: 0 */
+/*eslint max-len: 0 */
 
 auth.$inject = ['$window', '$http', '$log', '$timeout', 'apiUrl'];
 
 export default function auth($window, $http, $log, $timeout, apiUrl) {
     var token;
+    var userId;
     var auth2;
     var subscribers = [];
     var service = {
@@ -21,8 +22,31 @@ export default function auth($window, $http, $log, $timeout, apiUrl) {
 
     function activate() {
         loadAuth2();
+        if ('token' in localStorage && 'userId' in localStorage) {
+            loadInfo();
+        }
+    }
+
+    function saveInfo(data) {
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('userId', data.userId);
+        loadInfo();
+    }
+
+    function loadInfo() {
         token = localStorage.getItem('token');
-        publish(token);
+        userId = localStorage.getItem('userId');
+        $http.defaults.headers.common.Authorization = 'Token ' + token;
+        publish();
+    }
+
+    function removeInfo() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('userId');
+        token = undefined;
+        userId = undefined;
+        delete $http.defaults.headers.common.Authorization;
+        publish();
     }
 
     function loadAuth2() {
@@ -30,8 +54,8 @@ export default function auth($window, $http, $log, $timeout, apiUrl) {
             $log.info('loading auth2');
             $window.gapi.load('auth2', function () {
                 auth2 = gapi.auth2.init({
-                    client_id: '834587940126-fjh7cbmqpcpp8k6npjlmsh6gn1rlk1s9.apps.googleusercontent.com',
-                    cookie_policy: 'none'
+                    'client_id': '834587940126-fjh7cbmqpcpp8k6npjlmsh6gn1rlk1s9.apps.googleusercontent.com',
+                    'cookie_policy': 'none'
                 });
                 $log.info('auth2 loaded');
             });
@@ -47,24 +71,16 @@ export default function auth($window, $http, $log, $timeout, apiUrl) {
         }
     }
 
-    function publish(newToken) {
-        if (newToken) {
-            localStorage.setItem('token', newToken);
-            $http.defaults.headers.common.Authorization = 'Token ' + newToken;
-        } else {
-            localStorage.removeItem('token');
-            delete $http.defaults.headers.common.Authorization;
-        }
-        token = newToken;
+    function publish() {
         angular.forEach(subscribers, publishTo);
     }
 
     function publishTo(subscriber) {
-        subscriber(token);
+        subscriber(userId);
     }
 
     function signOut() {
-        publish(null);
+        removeInfo();
     }
 
     function signIn() {
@@ -84,10 +100,7 @@ export default function auth($window, $http, $log, $timeout, apiUrl) {
             .post(apiUrl + '/login/', {
                 code: response.code
             })
-            .success(data => {
-                publish(data.token);
-                $log.info('recieved token');
-            });
+            .success(saveInfo);
         return false;
     }
 }

@@ -15,12 +15,12 @@ export default function NotedownController($http, $log, User, Note, auth) {
 
     function activate() {
         vm.users = User.query();
-        auth.subscribe(setToken);
+        auth.subscribe(setUserId);
     }
 
-    function setToken(token) {
-        vm.token = token;
+    function setUserId(userId) {
+        vm.userId = userId;
         vm.notes = Note.query();
-        $log.info('token set!', vm.token);
+        $log.info('userId set!', vm.userId);
     }
 }

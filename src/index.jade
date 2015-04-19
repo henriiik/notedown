@@ -19,19 +19,18 @@ body(layout="row" layout-align="space-around start")
     md-content(ng-controller="NotedownController as vm" layout="column" style="max-width:800px;")
         div(layout="column" layout-align="space-around center")
             h1.md-display-4 Notedown!
-        md-card(ng-show="vm.token === null" ng-cloak)
+        md-card(ng-show="!vm.userId" ng-cloak)
             md-card-content(layout="row" layout-align="space-around center")
                 md-button(ng-click="vm.signIn()") Sign in with Google
-        md-card(ng-show="vm.token !== null" ng-cloak)
+        md-card(ng-show="vm.userId" ng-cloak)
             md-card-content(layout="row" layout-align="space-around center")
+                md-button UserId: {{ vm.userId }}
                 md-button New note
                 md-button(ng-click="vm.signOut()") Sign out
         md-card(ng-repeat="note in vm.notes" ng-cloak)
             md-card-content
                 p(ng-bind-html="note.getHtml()")
-                p
-                    span(ng-bind="note.user.email")
-                    span(ng-bind="note.edited | date : ' \@ yyyy-MM-dd HH:mm'")
+                p {{ note.user.first_name }} {{ note.user.last_name }} {{ note.edited | date : ' \@ yyyy-MM-dd HH:mm' }}
         md-card(ng-repeat="user in vm.users" ng-cloak)
             md-card-content
                 p(ng-bind="user.email")
