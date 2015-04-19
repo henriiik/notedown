@@ -35,7 +35,7 @@ export default function auth($window, $http, $log, $timeout, apiUrl) {
 
     function loadInfo() {
         token = localStorage.getItem('token');
-        userId = localStorage.getItem('userId');
+        userId = parseInt(localStorage.getItem('userId'), 10);
         $http.defaults.headers.common.Authorization = 'Token ' + token;
         publish();
     }

@@ -12,8 +12,9 @@ import auth from 'app/auth.service';
 import config from 'app/notedown.config';
 import markdown from 'app/markdown.service';
 import Note from 'app/note.service';
-import NoteListController from 'app/notedown.controller';
+import NoteListController from 'app/note-list.controller';
 import User from 'app/user.service';
+import UserController from 'app/user.controller';
 
 angular
     .module('notedown', [
@@ -29,4 +30,5 @@ angular
     .factory('markdown', markdown)
     .factory('Note', Note)
     .factory('User', User)
-    .controller('NoteListController', NoteListController);
+    .controller('NoteListController', NoteListController)
+    .controller('UserController', UserController);
