@@ -1,7 +1,7 @@
 import mock from 'angular-mocks';
 
-describe('NotedownController', function () {
-    var NotedownController, mockAuth, subscriber;
+describe('NoteListController', function () {
+    var NoteListController, mockAuth, subscriber;
 
     beforeEach(function () {
         mock.module('notedown');
@@ -17,22 +17,22 @@ describe('NotedownController', function () {
         });
 
         mock.inject(function ($controller) {
-            NotedownController = $controller('NotedownController');
+            NoteListController = $controller('NoteListController');
         });
     });
 
     it('should be defined', function () {
-        expect(NotedownController).toBeDefined();
+        expect(NoteListController).toBeDefined();
     });
 
     it('should have default empty users', function () {
-        expect(NotedownController.users).toBeDefined();
-        expect(NotedownController.users.length).toBe(0);
+        expect(NoteListController.users).toBeDefined();
+        expect(NoteListController.users.length).toBe(0);
     });
 
     it('should have default notes notes', function () {
-        expect(NotedownController.notes).toBeDefined();
-        expect(NotedownController.notes.length).toBe(0);
+        expect(NoteListController.notes).toBeDefined();
+        expect(NoteListController.notes.length).toBe(0);
     });
 
     it('should subscribe to auth service', function () {
