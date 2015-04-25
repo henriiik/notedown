@@ -17,8 +17,8 @@ body(layout="row" layout-align="space-around start")
             p(ng-if="!vm.user" layout="row" layout-align="space-around center")
                 md-button(ng-click="vm.signIn()" class="md-raised md-primary") Sign in with Google
             p(ng-if="vm.user" layout="row" layout-align="space-around center")
-                md-button(ui-sref="detail" class="md-raised") New note
-                md-button(ng-click="vm.signOut()" class="md-raised") Sign out {{ vm.user.first_name }} {{ vm.user.last_name }}
+                md-button.md-raised(ui-sref="detail({id: ''})") New note
+                md-button.md-raised(ng-click="vm.signOut()") Sign out {{ vm.user.first_name }} {{ vm.user.last_name }}
         div(ui-view)
     if production
         script(type="text/javascript" src="https://apis.google.com/js/client:platform.js" async defer)

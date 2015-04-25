@@ -10,7 +10,7 @@ export default function routes($stateProvider, $urlRouterProvider) {
             controller: 'NoteListController as vm'
         })
         .state('detail', {
-            url: '/note',
+            url: '/note/{id}',
             templateUrl: 'app/notes/detail.html',
             controller: 'NoteDetailController as vm'
         });

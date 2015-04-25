@@ -1,7 +1,7 @@
 Note.$inject = ['$resource', 'apiUrl', 'markdown'];
 
 export default function Note($resource, apiUrl, markdown) {
-    var resource = $resource(apiUrl + '/notes/:id');
+    var resource = $resource(apiUrl + '/notes/:id/');
 
     resource.prototype.getHtml = function () {
         if (!this.html) {
