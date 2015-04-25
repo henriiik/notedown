@@ -1,19 +1,8 @@
-config.$inject = ['$resourceProvider', '$stateProvider', '$urlRouterProvider'];
+config.$inject = ['$resourceProvider', '$mdThemingProvider'];
 
-export default function config($resourceProvider, $stateProvider, $urlRouterProvider) {
+export default function config($resourceProvider, $mdThemingProvider) {
     $resourceProvider.defaults.stripTrailingSlashes = false;
 
-    $urlRouterProvider.otherwise('/');
-
-    $stateProvider
-        .state('list', {
-            url: '/',
-            templateUrl: 'app/notes/list.html',
-            controller: 'NoteListController as vm'
-        })
-        .state('detail', {
-            url: '/note',
-            templateUrl: 'app/notes/detail.html',
-            controller: 'NoteDetailController as vm'
-        });
+    $mdThemingProvider.theme('default')
+        .primaryPalette('blue');
 }

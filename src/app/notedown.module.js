@@ -14,6 +14,7 @@ import './services/services.module';
 import './users/users.module';
 
 import config from './notedown.config';
+import routes from './notedown.routes';
 
 angular
     .module('notedown', [
@@ -26,6 +27,7 @@ angular
         'notedown.users'
     ])
     .config(config)
+    .config(routes)
     // .constant('apiUrl', 'http://cors.enhenrik.nu:8000')
     // .constant('apiUrl', 'http://backend-henro843.openshift.ida.liu.se')
     .constant('apiUrl', 'https://backend-enhenrik.rhcloud.com')
