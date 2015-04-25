@@ -3,8 +3,9 @@ md-card
         md-input-container
             label Content
             textarea(ng-model="vm.note.content" ng-change="vm.note.updateHtml()")
-    div(class="md-actions" layout="row" layout-align="end center")
+        md-checkbox(ng-model="vm.note.public") Public
+    div.md-actions(layout="row" layout-align="end center")
             md-button(ui-sref="list") Cancel
-            md-button Save
+            md-button.md-primary Save
 md-card
     md-card-content(ng-bind-html="vm.note.getHtml()")
