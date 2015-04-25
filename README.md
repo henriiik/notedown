@@ -1,10 +1,12 @@
+[![Build Status](https://travis-ci.org/henriiik/notedown.svg?branch=master)](https://travis-ci.org/henriiik/notedown)
+
 # Notedown
 
 ## Functional Specification
 
 ### Vision
 A note-taking-site where a user create notes and keep them for themselves,
-share them with other users or release them publicly. 
+share them with other users or release them publicly.
 
 ### Core Features
 
@@ -93,7 +95,7 @@ npm run start
 ### Linting
 
 The gulp command for linting runs all js files in the src/app folder through
-eslint. 
+eslint.
 
 ```sh
 gulp lint
@@ -149,8 +151,8 @@ Got the frontend up and runnning with a small test page that loads a small
 angular app with systemjs and transpiles es6 in the browser. The result was at
 first very slow but after fixing the configuration it sped up quite a bit.
 
-Also got a openshift server running on [openshift online][openshift] since 
-https://openshift.ida.liu.se seems to be down. The system seems quite usable, 
+Also got a openshift server running on [openshift online][openshift] since
+https://openshift.ida.liu.se seems to be down. The system seems quite usable,
 but the deploys take a lot of time.
 
 
