@@ -16,7 +16,7 @@ module.exports = function (config) {
             config: 'src/config.js',
             packages: 'src/jspm_packages',
             loadFiles: [
-                'src/app/*.spec.js',
+                'src/app/**/*.spec.js',
                 'src/app/notedown.module.js'
             ],
             serveFiles: [
