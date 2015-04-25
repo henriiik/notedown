@@ -1,9 +1,9 @@
 /* globals gapi */
 /*eslint max-len: 0 */
 
-auth.$inject = ['$window', '$http', '$log', '$timeout', 'apiUrl'];
+auth.$inject = ['$window', '$http', '$log', '$timeout', 'apiUrl', 'messages', 'toasts'];
 
-export default function auth($window, $http, $log, $timeout, apiUrl) {
+export default function auth($window, $http, $log, $timeout, apiUrl, messages, toasts) {
     var token;
     var userId;
     var auth2;
@@ -31,6 +31,7 @@ export default function auth($window, $http, $log, $timeout, apiUrl) {
         localStorage.setItem('token', data.token);
         localStorage.setItem('userId', data.userId);
         loadInfo();
+        toasts.show('Login successful');
     }
 
     function loadInfo() {
@@ -47,6 +48,7 @@ export default function auth($window, $http, $log, $timeout, apiUrl) {
         userId = undefined;
         delete $http.defaults.headers.common.Authorization;
         publish();
+        toasts.show('Logout successful');
     }
 
     function loadAuth2() {

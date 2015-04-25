@@ -15,6 +15,6 @@ export default function NoteListController($http, $log, User, Note, auth) {
 
     function setUserId(userId) {
         vm.userId = userId;
-        vm.notes = Note.query();
+        Note.query(notes => vm.notes = notes);
     }
 }

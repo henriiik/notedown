@@ -1,6 +1,6 @@
-NoteDetailController.$inject = ['Note', 'auth', '$stateParams'];
+NoteDetailController.$inject = ['Note', 'auth', '$stateParams', '$state', 'toasts'];
 
-export default function NoteDetailController(Note, auth, $stateParams) {
+export default function NoteDetailController(Note, auth, $stateParams, $state, toasts) {
     var vm = this;
 
     vm.deleteNote = deleteNote;
@@ -35,15 +35,29 @@ export default function NoteDetailController(Note, auth, $stateParams) {
 
     function deleteNote() {
         if (vm.note.id) {
-            vm.note.$delete();
+            vm.note.$delete(() => {
+                $state.go('list');
+                toasts.show('Successfully deleted');
+            });
         }
     }
 
     function saveNote() {
         if (vm.note.id) {
-            vm.note.$put();
+            vm.note.$put({}, () => {
+                toasts.show('Successfully saved');
+            }, () => {
+                $state.go('list');
+            });
         } else {
-            vm.note.$save(note => $stateParams.id = note.id);
+            vm.note.$save({}, note => {
+                $state.go('detail', {
+                    id: note.id
+                });
+                toasts.show('Successfully created');
+            }, () => {
+                $state.go('list');
+            });
         }
     }
 }

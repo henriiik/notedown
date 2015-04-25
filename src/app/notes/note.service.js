@@ -13,7 +13,9 @@ export default function Note($resource, apiUrl, markdown) {
     };
 
     resource.prototype.updateHtml = function () {
-        this.html = markdown.convert(this.content);
+        if (typeof this.content === 'string') {
+            this.html = markdown.convert(this.content);
+        }
     };
 
     return resource;
