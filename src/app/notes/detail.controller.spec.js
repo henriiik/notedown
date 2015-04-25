@@ -1,22 +1,19 @@
 import mock from 'angular-mocks';
 
-describe('NoteListController', () => {
-    var NoteListController, mockAuth, mockNote, subscriber;
+describe('NoteDetailController', () => {
+    var NoteDetailController, mockAuth, mockNote, mockPrototype, subscriber;
 
     beforeEach(() => {
         mock.module('notedown.notes');
-
         mockAuth = {
             subscribe: s => subscriber = s
         };
 
         spyOn(mockAuth, 'subscribe').and.callThrough();
 
-        mockNote = {
-            query: () => {}
-        };
-
-        spyOn(mockNote, 'query').and.callThrough();
+        mockPrototype = input => input;
+        mockNote = input => input;
+        mockNote.prototype = mockPrototype;
 
         mock.module($provide => {
             $provide.value('auth', mockAuth);
@@ -24,17 +21,17 @@ describe('NoteListController', () => {
         });
 
         mock.inject($controller => {
-            NoteListController = $controller('NoteListController');
+            NoteDetailController = $controller('NoteDetailController');
         });
     });
 
     it('should be defined', () => {
-        expect(NoteListController).toBeDefined();
+        expect(NoteDetailController).toBeDefined();
     });
 
-    it('should have default notes notes', () => {
-        expect(NoteListController.notes).toBeDefined();
-        expect(NoteListController.notes.length).toBe(0);
+    it('should create a new note', () => {
+        expect(NoteDetailController.note).toBeDefined();
+        expect(NoteDetailController.note.content).toBeDefined();
     });
 
     it('should subscribe to auth service', () => {
@@ -47,11 +44,6 @@ describe('NoteListController', () => {
 
     it('subscribe function should set userId', () => {
         subscriber(123);
-        expect(NoteListController.userId).toBe(123);
-    });
-
-    it('subscribe function should get notes', () => {
-        subscriber(123);
-        expect(mockNote.query).toHaveBeenCalled();
+        expect(NoteDetailController.userId).toBe(123);
     });
 });

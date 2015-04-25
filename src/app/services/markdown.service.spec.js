@@ -4,7 +4,7 @@ describe('markdown', function () {
     var markdown;
 
     beforeEach(function () {
-        mock.module('notedown');
+        mock.module('notedown.services');
 
         mock.inject(function (_markdown_) {
             markdown = _markdown_;

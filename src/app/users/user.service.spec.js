@@ -4,7 +4,7 @@ describe('User', function () {
     var User;
 
     beforeEach(function () {
-        mock.module('notedown');
+        mock.module('notedown.users');
 
         mock.inject(function (_User_) {
             User = _User_;

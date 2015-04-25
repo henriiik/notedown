@@ -4,7 +4,7 @@ describe('auth', function () {
     var auth;
 
     beforeEach(function () {
-        mock.module('notedown');
+        mock.module('notedown.services');
 
         mock.inject(function (_auth_) {
             auth = _auth_;

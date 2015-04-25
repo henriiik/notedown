@@ -6,7 +6,7 @@ describe('UserController', () => {
     beforeEach(() => {
         userId = 123;
 
-        mock.module('notedown');
+        mock.module('notedown.users');
 
         mockAuth = {
             signIn: () => {},
