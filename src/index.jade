@@ -16,24 +16,17 @@ html(ng-app="notedown")
                 line-height: 11.2rem;
             }
 body(layout="row" layout-align="space-around start")
-    md-content(ng-controller="NoteListController as vm" layout="column" style="max-width:800px;")
+    md-content(layout="column" style="max-width:800px;")
         div(layout="column" layout-align="space-around center")
             h1.md-display-4 Notedown!
         md-card(ng-controller="UserController as vm" ng-cloak)
             md-card-content(ng-if="!vm.user" layout="row" layout-align="space-around center")
                 md-button(ng-click="vm.signIn()") Sign in with Google
             md-card-content(ng-if="vm.user" layout="row" layout-align="space-around center")
-                md-button New note
+                md-button(ui-sref="list") All notes
+                md-button(ui-sref="detail") New note
                 md-button(ng-click="vm.signOut()") Sign out {{ vm.user.first_name }} {{ vm.user.last_name }}
-        md-card(ng-repeat="note in vm.notes" ng-cloak)
-            md-card-content
-                p(ng-bind-html="note.getHtml()")
-                p(layout="row" layout-align="space-between center")
-                    span
-                        | {{ note.user.first_name }} {{ note.user.last_name }} @
-                        | {{ note.edited | date : 'yyyy-MM-dd HH:mm' }}
-                        span(ng-if="!note.public")  (private)
-                    md-button(ng-if="note.user.id === vm.userId") Edit
+        div(ui-view)
     if production
         script(type="text/javascript" src="https://apis.google.com/js/client:platform.js" async defer)
         script(type="text/javascript" src="notedown.js")

@@ -14,9 +14,13 @@ System.config({
     "angular-mocks": "github:angular/bower-angular-mocks@1.3.15",
     "angular-resource": "github:angular/bower-angular-resource@1.3.15",
     "angular-sanitize": "github:angular/bower-angular-sanitize@1.3.15",
+    "angular-ui-router": "github:angular-ui/ui-router@0.2.14",
     "showdown": "github:showdownjs/showdown@0.4.0",
     "traceur": "github:jmcriffey/bower-traceur@0.0.87",
     "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.87",
+    "github:angular-ui/ui-router@0.2.14": {
+      "angular": "github:angular/bower-angular@1.3.15"
+    },
     "github:angular/bower-angular-animate@1.3.15": {
       "angular": "github:angular/bower-angular@1.3.15"
     },
