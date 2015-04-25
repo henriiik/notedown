@@ -1,6 +1,6 @@
-NoteDetailController.$inject = ['$http', '$log', 'User', 'Note', 'auth'];
+NoteDetailController.$inject = ['Note', 'auth'];
 
-export default function NoteDetailController($http, $log, User, Note, auth) {
+export default function NoteDetailController(Note, auth) {
     var vm = this;
 
     activate();
@@ -8,7 +8,7 @@ export default function NoteDetailController($http, $log, User, Note, auth) {
     ///////////
 
     function activate() {
-        vm.note = new Note();
+        vm.note = new Note({content: '#New note \n\n edit me!'});
         auth.subscribe(setUserId);
     }
 
