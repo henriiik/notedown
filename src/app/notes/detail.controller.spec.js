@@ -1,22 +1,25 @@
 import mock from 'angular-mocks';
 
 describe('NoteDetailController', () => {
-    var NoteDetailController, mockAuth, mockNote, mockPrototype, subscriber;
+    var NoteDetailController, mockMessages, mockNote, mockPrototype, topic, listener;
 
     beforeEach(() => {
         mock.module('notedown.notes');
-        mockAuth = {
-            subscribe: s => subscriber = s
+        mockMessages = {
+            subscribe: (t, l) => {
+                topic = t;
+                listener = l;
+            }
         };
 
-        spyOn(mockAuth, 'subscribe').and.callThrough();
+        spyOn(mockMessages, 'subscribe').and.callThrough();
 
         mockPrototype = input => input;
         mockNote = input => input;
         mockNote.prototype = mockPrototype;
 
         mock.module($provide => {
-            $provide.value('auth', mockAuth);
+            $provide.value('messages', mockMessages);
             $provide.value('Note', mockNote);
         });
 
@@ -34,16 +37,17 @@ describe('NoteDetailController', () => {
         expect(NoteDetailController.note.content).toBeDefined();
     });
 
-    it('should subscribe to auth service', () => {
-        expect(mockAuth.subscribe).toHaveBeenCalled();
+    it('should subscribe to messages service', () => {
+        expect(mockMessages.subscribe).toHaveBeenCalled();
     });
 
-    it('should subscribe with a function', () => {
-        expect(subscriber).toEqual(jasmine.any(Function));
+    it('should subscribe to userId with a function', () => {
+        expect(topic).toEqual('userId');
+        expect(listener).toEqual(jasmine.any(Function));
     });
 
     it('subscribe function should set userId', () => {
-        subscriber(123);
+        listener(123);
         expect(NoteDetailController.userId).toBe(123);
     });
 });

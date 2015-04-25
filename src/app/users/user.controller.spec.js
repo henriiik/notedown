@@ -1,7 +1,7 @@
 import mock from 'angular-mocks';
 
 describe('UserController', () => {
-    var UserController, mockAuth, mockUser, subscriber, userId;
+    var UserController, mockAuth, mockMessages, mockUser, topic, listener, userId;
 
     beforeEach(() => {
         userId = 123;
@@ -10,11 +10,16 @@ describe('UserController', () => {
 
         mockAuth = {
             signIn: () => {},
-            signOut: () => {},
-            subscribe: s => subscriber = s
+            signOut: () => {}
         };
 
-        spyOn(mockAuth, 'subscribe').and.callThrough();
+        mockMessages = {
+            subscribe: (t, l) => {
+                topic = t;
+                listener = l;
+            }
+        };
+        spyOn(mockMessages, 'subscribe').and.callThrough();
 
         mockUser = {
             get: () => {}
@@ -24,6 +29,7 @@ describe('UserController', () => {
 
         mock.module($provide => {
             $provide.value('auth', mockAuth);
+            $provide.value('messages', mockMessages);
             $provide.value('User', mockUser);
         });
 
@@ -45,25 +51,26 @@ describe('UserController', () => {
     });
 
     it('should subscribe to auth service', () => {
-        expect(mockAuth.subscribe).toHaveBeenCalled();
+        expect(mockMessages.subscribe).toHaveBeenCalled();
     });
 
-    it('should subscribe with a function', () => {
-        expect(subscriber).toEqual(jasmine.any(Function));
+    it('should subscribe to userId with a function', () => {
+        expect(topic).toEqual('userId');
+        expect(listener).toEqual(jasmine.any(Function));
     });
 
     it('subscribe function should set userId', () => {
-        subscriber(userId);
+        listener(userId);
         expect(UserController.userId).toBe(userId);
     });
 
     it('subscribe function should get user', () => {
-        subscriber(userId);
+        listener(userId);
         expect(mockUser.get).toHaveBeenCalledWith({id: userId});
     });
 
     it('subscribe function should delete userId', () => {
-        subscriber();
+        listener();
         expect(UserController.userId).toBeUndefined();
     });
 });

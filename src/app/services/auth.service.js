@@ -7,9 +7,7 @@ export default function auth($window, $http, $log, $timeout, apiUrl, messages, t
     var token;
     var userId;
     var auth2;
-    var subscribers = [];
     var service = {
-        subscribe: subscribe,
         signIn: signIn,
         signOut: signOut
     };
@@ -51,6 +49,10 @@ export default function auth($window, $http, $log, $timeout, apiUrl, messages, t
         toasts.show('Logout successful');
     }
 
+    function publish() {
+        messages.publish('userId', userId);
+    }
+
     function loadAuth2() {
         if ($window.gapi) {
             $log.info('loading auth2');
@@ -64,21 +66,6 @@ export default function auth($window, $http, $log, $timeout, apiUrl, messages, t
         } else {
             $timeout(loadAuth2, 10, false);
         }
-    }
-
-    function subscribe(func) {
-        if (func) {
-            subscribers.push(func);
-            publishTo(func);
-        }
-    }
-
-    function publish() {
-        angular.forEach(subscribers, publishTo);
-    }
-
-    function publishTo(subscriber) {
-        subscriber(userId);
     }
 
     function signOut() {
@@ -102,7 +89,8 @@ export default function auth($window, $http, $log, $timeout, apiUrl, messages, t
             .post(apiUrl + '/login/', {
                 code: response.code
             })
-            .success(saveInfo);
+            .success(saveInfo)
+            .error(removeInfo);
         return false;
     }
 }

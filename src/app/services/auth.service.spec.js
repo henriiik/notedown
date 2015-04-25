@@ -15,7 +15,11 @@ describe('auth', function () {
         expect(auth).toBeDefined();
     });
 
-    it('should have query function', function () {
-        expect(auth.subscribe).toBeDefined();
+    it('should have signIn function', function () {
+        expect(auth.signIn).toBeDefined();
+    });
+
+    it('should have signOut function', function () {
+        expect(auth.signOut).toBeDefined();
     });
 });

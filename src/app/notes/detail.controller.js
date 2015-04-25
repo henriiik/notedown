@@ -1,6 +1,6 @@
-NoteDetailController.$inject = ['Note', 'auth', '$stateParams', '$state', 'toasts'];
+NoteDetailController.$inject = ['Note', 'messages', '$stateParams', '$state', 'toasts'];
 
-export default function NoteDetailController(Note, auth, $stateParams, $state, toasts) {
+export default function NoteDetailController(Note, messages, $stateParams, $state, toasts) {
     var vm = this;
 
     vm.deleteNote = deleteNote;
@@ -11,7 +11,7 @@ export default function NoteDetailController(Note, auth, $stateParams, $state, t
     ///////////
 
     function activate() {
-        auth.subscribe(setUserId);
+        messages.subscribe('userId', setUserId);
         if ($stateParams.id) {
             Note.get({
                 id: $stateParams.id
@@ -19,7 +19,8 @@ export default function NoteDetailController(Note, auth, $stateParams, $state, t
         } else {
             setNote(
                 new Note({
-                    content: '#New note \n\n edit me!'
+                    content: '#New note \n\n edit me!',
+                    user: {id: vm.userId}
                 })
             );
         }

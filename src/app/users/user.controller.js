@@ -1,6 +1,6 @@
-UserController.$inject = ['$log', 'User', 'auth'];
+UserController.$inject = ['$log', 'User', 'auth', 'messages'];
 
-export default function UserController($log, User, auth) {
+export default function UserController($log, User, auth, messages) {
     var vm = this;
 
     vm.signIn = auth.signIn;
@@ -11,7 +11,7 @@ export default function UserController($log, User, auth) {
     ///////////
 
     function activate() {
-        auth.subscribe(setUserId);
+        messages.subscribe('userId', setUserId);
     }
 
     function setUserId(userId) {

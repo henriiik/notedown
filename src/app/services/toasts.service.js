@@ -20,6 +20,9 @@ export default function toasts(messages, $mdToast, $log) {
     }
 
     function responseErrorToast(rejection) {
+        if (!rejection) {
+            return;
+        }
         var message = rejection.status + ' - ';
         if (rejection.data && rejection.data.detail) {
             message += rejection.data.detail;

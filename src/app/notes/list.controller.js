@@ -1,6 +1,6 @@
-NoteListController.$inject = ['$http', '$log', 'User', 'Note', 'auth'];
+NoteListController.$inject = ['$http', '$log', 'User', 'Note', 'messages'];
 
-export default function NoteListController($http, $log, User, Note, auth) {
+export default function NoteListController($http, $log, User, Note, messages) {
     var vm = this;
 
     vm.notes = [];
@@ -10,7 +10,7 @@ export default function NoteListController($http, $log, User, Note, auth) {
     ///////////
 
     function activate() {
-        auth.subscribe(setUserId);
+        messages.subscribe('userId', setUserId);
     }
 
     function setUserId(userId) {

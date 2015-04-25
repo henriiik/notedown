@@ -1,4 +1,4 @@
-md-card(ng-if="vm.note")
+md-card(ng-if="vm.userId && vm.userId === vm.note.user.id")
     md-card-content
         md-input-container
             label Content
@@ -10,3 +10,4 @@ md-card(ng-if="vm.note")
             md-button.md-primary(ng-click="vm.saveNote()") Save
 md-card(ng-if="vm.note")
     md-card-content(ng-bind-html="vm.note.getHtml()")
+    md-card-footer(ng-bind="vm.note.user.id")
