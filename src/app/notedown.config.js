@@ -12,7 +12,7 @@ export default function config($resourceProvider, $stateProvider, $urlRouterProv
             controller: 'NoteListController as vm'
         })
         .state('detail', {
-            url: 'note',
+            url: '/note',
             templateUrl: 'app/notes/detail.html',
             controller: 'NoteDetailController as vm'
         });

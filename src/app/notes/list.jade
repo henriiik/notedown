@@ -1,9 +1,5 @@
-md-card(ng-repeat="note in vm.notes" ng-cloak)
-    md-card-content
-        p(ng-bind-html="note.getHtml()")
-        p(layout="row" layout-align="space-between center")
-            span
-                | {{ note.user.first_name }} {{ note.user.last_name }} @
-                | {{ note.edited | date : 'yyyy-MM-dd HH:mm' }}
-                span(ng-if="!note.public")  (private)
-            md-button(ng-if="note.user.id === vm.userId") Edit
+md-card(ng-repeat="note in vm.notes")
+    md-card-content(ng-bind-html="note.getHtml()")
+    div(class="md-actions" layout="row" layout-align="end center")
+            md-button {{ note.user.first_name }} {{ note.user.last_name }}
+            md-button {{ note.edited | date : 'yyyy-MM-dd HH:mm' }}

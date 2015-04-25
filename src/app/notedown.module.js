@@ -9,21 +9,22 @@ import 'angular-ui-router';
 import Showdown from 'showdown';
 
 // Notedown
-import auth from 'app/auth.service';
-import config from 'app/notedown.config';
-import markdown from 'app/markdown.service';
-import Note from 'app/note.service';
-import NoteDetailController from 'app/note-detail.controller';
-import NoteListController from 'app/note-list.controller';
-import User from 'app/user.service';
-import UserController from 'app/user.controller';
+import './notes/notes.module';
+
+import auth from './auth.service';
+import config from './notedown.config';
+import markdown from './markdown.service';
+import Note from './note.service';
+import User from './user.service';
+import UserController from './user.controller';
 
 angular
     .module('notedown', [
         'ngMaterial',
         'ngResource',
         'ngSanitize',
-        'ui.router'
+        'ui.router',
+        'notedown.notes'
     ])
     .config(config)
     // .constant('apiUrl', 'http://cors.enhenrik.nu:8000')
@@ -34,6 +35,4 @@ angular
     .factory('markdown', markdown)
     .factory('Note', Note)
     .factory('User', User)
-    .controller('NoteDetailController', NoteDetailController)
-    .controller('NoteListController', NoteListController)
     .controller('UserController', UserController);
