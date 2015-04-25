@@ -12,7 +12,7 @@ html(ng-app="notedown")
 body(layout="row" layout-align="space-around start")
     md-content(layout="column" style="max-width:800px;")
         div(layout="column" layout-align="space-around center")
-            h1.md-display-4 Notedown!
+            h1.md-display-4(ui-sref="list") Notedown!
         div(ng-controller="UserController as vm" ng-cloak)
             p(ng-if="!vm.user" layout="row" layout-align="space-around center")
                 md-button(ng-click="vm.signIn()" class="md-raised md-primary") Sign in with Google
