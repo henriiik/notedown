@@ -10,7 +10,7 @@ System.config({
 System.config({
   "map": {
     "angular": "github:angular/bower-angular@1.3.15",
-    "angular-material": "github:angular/bower-material@0.8.3",
+    "angular-material": "github:angular/bower-material@0.9.0-rc2",
     "angular-mocks": "github:angular/bower-angular-mocks@1.3.15",
     "angular-resource": "github:angular/bower-angular-resource@1.3.15",
     "angular-sanitize": "github:angular/bower-angular-sanitize@1.3.15",
@@ -33,17 +33,17 @@ System.config({
     "github:angular/bower-angular-sanitize@1.3.15": {
       "angular": "github:angular/bower-angular@1.3.15"
     },
-    "github:angular/bower-material@0.8.3": {
+    "github:angular/bower-material@0.9.0-rc2": {
       "angular": "github:angular/bower-angular@1.3.15",
       "angular-animate": "github:angular/bower-angular-animate@1.3.15",
       "angular-aria": "github:angular/bower-angular-aria@1.3.15",
-      "css": "github:systemjs/plugin-css@0.1.9"
+      "css": "github:systemjs/plugin-css@0.1.10"
     },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
     "github:jspm/nodelibs-buffer@0.1.0": {
-      "buffer": "npm:buffer@3.1.2"
+      "buffer": "npm:buffer@3.2.1"
     },
     "github:jspm/nodelibs-events@0.1.0": {
       "events-browserify": "npm:events-browserify@0.0.1"
@@ -77,7 +77,7 @@ System.config({
     "github:jspm/nodelibs-util@0.1.0": {
       "util": "npm:util@0.10.3"
     },
-    "github:systemjs/plugin-css@0.1.9": {
+    "github:systemjs/plugin-css@0.1.10": {
       "clean-css": "npm:clean-css@3.1.9",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "path": "github:jspm/nodelibs-path@0.1.0"
@@ -91,7 +91,7 @@ System.config({
     "npm:assert@1.3.0": {
       "util": "npm:util@0.10.3"
     },
-    "npm:buffer@3.1.2": {
+    "npm:buffer@3.2.1": {
       "base64-js": "npm:base64-js@0.0.8",
       "ieee754": "npm:ieee754@1.1.4",
       "is-array": "npm:is-array@1.0.1"
