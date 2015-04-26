@@ -1,0 +1,9 @@
+div(flex-sm="100" flex-md="80" offset-md="10" flex-gt-md="60" offset-gt-md="20")
+    md-card(ng-if="vm.user.$resolved")
+        md-card-content
+            h2 {{ vm.user.first_name }} {{ vm.user.last_name }}
+            p Email: {{ vm.user.email }}
+            p
+                | Url:&nbsp;
+                a(href="{{ vm.user.url }}") {{ vm.user.url }}
+    md-card(ng-repeat="note in vm.notes" nd-note="note")

@@ -13,14 +13,15 @@ html(ng-app="notedown")
     body
         md-content(layout="column" layout-align="space-around center" style="width: 100%")
             div(layout="column" layout-align="space-around center")
-                h1.md-display-4(hide show-gt-sm ui-sref="list") Notedown!
-                h1.md-display-3(hide show-sm ui-sref="list") Notedown!
-            div(layout="row" layout-align="space-around center" ng-controller="MenuController as vm")
-                md-button.md-raised(ng-if="'detail' | isState" ui-sref="list") All notes
-                md-button.md-raised(ng-if="vm.user" ui-sref="detail({id: ''})") New note
-                md-button.md-raised(ng-if="vm.user" ng-click="vm.signOut()") Sign out
+                h1.md-display-4(hide show-gt-sm ui-sref="index") Notedown!
+                h1.md-display-3(hide show-sm ui-sref="index") Notedown!
+            div(layout="row" layout-align="space-around center" ng-controller="MenuController as vm" ng-cloak)
+                md-button.md-raised(ui-sref="index") All notes
+                md-button.md-raised(ng-if="vm.user.$resolved" ui-sref="note({id: ''})") New note
+                md-button.md-raised(ng-if="vm.user.$resolved" ui-sref="user({id: vm.user.id})") My page
+                md-button.md-raised(ng-if="vm.user.$resolved" ng-click="vm.signOut()") Sign out
                 md-button.md-raised.md-primary(ng-if="!vm.user" ng-click="vm.signIn()" class="") Sign in with Google
-            div(layout="row" flex-wrap style="width:100%" ui-view)
+            div(layout="row" flex-wrap style="width:100%" ui-view ng-cloak)
         if production
             script(type="text/javascript" src="https://apis.google.com/js/client:platform.js" async defer)
             script(type="text/javascript" src="notedown.js")

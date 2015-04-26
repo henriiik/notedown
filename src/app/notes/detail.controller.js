@@ -3,6 +3,8 @@ NoteDetailController.$inject = ['Note', 'messages', '$stateParams', '$state', 't
 export default function NoteDetailController(Note, messages, $stateParams, $state, toasts) {
     var vm = this;
 
+    vm.newNote = false;
+
     vm.deleteNote = deleteNote;
     vm.saveNote = saveNote;
 
@@ -17,6 +19,7 @@ export default function NoteDetailController(Note, messages, $stateParams, $stat
                 id: $stateParams.id
             }, setNote);
         } else {
+            vm.newNote = true;
             setNote(
                 new Note({
                     content: '#New note\n\nedit me!'
@@ -36,7 +39,7 @@ export default function NoteDetailController(Note, messages, $stateParams, $stat
     function deleteNote() {
         if (vm.note.id) {
             vm.note.$delete(() => {
-                $state.go('list');
+                $state.go('index');
                 toasts.show('Successfully deleted');
             });
         }
@@ -47,16 +50,16 @@ export default function NoteDetailController(Note, messages, $stateParams, $stat
             vm.note.$put({}, () => {
                 toasts.show('Successfully saved');
             }, () => {
-                $state.go('list');
+                $state.go('index');
             });
         } else {
             vm.note.$save({}, note => {
-                $state.go('detail', {
+                $state.go('note', {
                     id: note.id
                 });
                 toasts.show('Successfully created');
             }, () => {
-                $state.go('list');
+                $state.go('index');
             });
         }
     }
