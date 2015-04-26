@@ -45,7 +45,6 @@
             "anonymous": "always",
             "named": "never"
         }],
-        "space-in-brackets": [2, "never"],
         "space-in-parens": [2, "never"],
         "max-len": [2, 100, 4]
     }
