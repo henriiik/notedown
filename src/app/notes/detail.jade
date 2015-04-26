@@ -1,5 +1,5 @@
-div(flex-sm="100" flex-md="80" offset-md="10" flex-gt-md="60" offset-gt-md="20")
-    md-card(ng-if="vm.userId && (vm.userId === vm.note.user.id || !vm.note.user.id)")
+div(flex-sm="100" flex-gt-sm="80" offset-gt-sm="10" layout-sm="column" layout-gt-md="row")
+    md-card(flex-sm="100" flex-gt-sm="50" ng-if="vm.userId && (vm.userId === vm.note.user.id || !vm.note.user.id)")
         md-card-content
             md-input-container
                 label Content
@@ -9,6 +9,6 @@ div(flex-sm="100" flex-md="80" offset-md="10" flex-gt-md="60" offset-gt-md="20")
                 md-button(ui-sref="list") Cancel
                 md-button.md-warn(ng-if="vm.note.id" ng-click="vm.deleteNote()") Delete
                 md-button.md-primary(ng-click="vm.saveNote()") Save
-    md-card(ng-if="vm.note")
+    md-card(flex-sm="100" flex-gt-sm="50" ng-if="vm.note")
         md-card-content(ng-bind-html="vm.note.getHtml()")
         md-card-footer(ng-bind="vm.note.user.id")
