@@ -1,6 +1,7 @@
 doctype html
 html(ng-app="notedown")
     head
+        meta(name="viewport" content="initial-scale=1")
         title Notedown!
         style.
             body {
@@ -9,22 +10,21 @@ html(ng-app="notedown")
             [ng-cloak] {
                 display: none;
             }
-body(layout="row" layout-align="space-around start")
-    md-content(layout="column" style="max-width:800px;")
-        div(layout="column" layout-align="space-around center")
-            h1.md-display-4(ui-sref="list") Notedown!
-        div(ng-controller="UserController as vm" ng-cloak)
-            p(ng-if="!vm.user" layout="row" layout-align="space-around center")
-                md-button(ng-click="vm.signIn()" class="md-raised md-primary") Sign in with Google
-            p(ng-if="vm.user" layout="row" layout-align="space-around center")
-                md-button.md-raised(ui-sref="detail({id: ''})") New note
-                md-button.md-raised(ng-click="vm.signOut()") Sign out {{ vm.user.first_name }} {{ vm.user.last_name }}
-        div(ui-view)
-    if production
-        script(type="text/javascript" src="https://apis.google.com/js/client:platform.js" async defer)
-        script(type="text/javascript" src="notedown.js")
-    else
-        script(type="text/javascript" src="https://apis.google.com/js/client:platform.js" async defer)
-        script(type="text/javascript" src="jspm_packages/system.js")
-        script(type="text/javascript" src="config.js")
-        script(type="text/javascript" src="bootstrap.js")
+    body
+        md-content(layout="column" layout-align="space-around center" style="width: 100%")
+            div(layout="column" layout-align="space-around center")
+                h1.md-display-4(ui-sref="list") Notedown!
+            div(layout="row" layout-align="space-around center" ng-controller="UserController as vm")
+                md-button.md-raised(ng-if="'detail' | isState" ui-sref="list") All notes
+                md-button.md-raised(ng-if="vm.user" ui-sref="detail({id: ''})") New note
+                md-button.md-raised(ng-if="vm.user" ng-click="vm.signOut()") Sign out {{ vm.user.first_name }} {{ vm.user.last_name }}
+                md-button.md-raised.md-primary(ng-if="!vm.user" ng-click="vm.signIn()" class="") Sign in with Google
+            div(layout="row" flex-wrap style="width:100%" ui-view)
+        if production
+            script(type="text/javascript" src="https://apis.google.com/js/client:platform.js" async defer)
+            script(type="text/javascript" src="notedown.js")
+        else
+            script(type="text/javascript" src="https://apis.google.com/js/client:platform.js" async defer)
+            script(type="text/javascript" src="jspm_packages/system.js")
+            script(type="text/javascript" src="config.js")
+            script(type="text/javascript" src="bootstrap.js")

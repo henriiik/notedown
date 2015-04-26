@@ -19,8 +19,7 @@ export default function NoteDetailController(Note, messages, $stateParams, $stat
         } else {
             setNote(
                 new Note({
-                    content: '#New note \n\n edit me!',
-                    user: {id: vm.userId}
+                    content: '#New note\n\nedit me!'
                 })
             );
         }
