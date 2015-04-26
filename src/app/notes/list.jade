@@ -1,6 +1,2 @@
 div(flex-sm="100" flex-md="80" offset-md="10" flex-gt-md="60" offset-gt-md="20")
-    md-card(ng-repeat="note in vm.notes")
-        md-card-content(ng-bind-html="note.getHtml()")
-        div(class="md-actions" layout="row" layout-align="end center")
-                md-button {{ note.user.email }}
-                md-button(ui-sref="detail({id: note.id})")  {{ note.edited | date : 'yyyy-MM-dd HH:mm' }}
+    md-card(ng-repeat="note in vm.notes" nd-note="note")
