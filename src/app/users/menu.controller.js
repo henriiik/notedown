@@ -1,6 +1,6 @@
-MenuController.$inject = ['$log', 'User', 'auth', 'messages'];
+MenuController.$inject = ['$log', 'auth', 'messages'];
 
-export default function MenuController($log, User, auth, messages) {
+export default function MenuController($log, auth, messages) {
     var vm = this;
 
     vm.signIn = auth.signIn;
@@ -11,15 +11,10 @@ export default function MenuController($log, User, auth, messages) {
     ///////////
 
     function activate() {
-        messages.subscribe('userId', setUserId);
+        messages.subscribe('currentUser', setCurrentUser);
     }
 
-    function setUserId(userId) {
-        vm.userId = userId;
-        if (userId) {
-            vm.user = User.get({id: userId});
-        } else {
-            delete vm.user;
-        }
+    function setCurrentUser(user) {
+        vm.user = user;
     }
 }

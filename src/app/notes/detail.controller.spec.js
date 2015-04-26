@@ -41,13 +41,13 @@ describe('NoteDetailController', () => {
         expect(mockMessages.subscribe).toHaveBeenCalled();
     });
 
-    it('should subscribe to userId with a function', () => {
-        expect(topic).toEqual('userId');
+    it('should subscribe to currentUser with a function', () => {
+        expect(topic).toEqual('currentUser');
         expect(listener).toEqual(jasmine.any(Function));
     });
 
-    it('subscribe function should set userId', () => {
+    it('subscribe function should set user', () => {
         listener(123);
-        expect(NoteDetailController.userId).toBe(123);
+        expect(NoteDetailController.user).toBe(123);
     });
 });

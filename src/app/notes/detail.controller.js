@@ -13,7 +13,7 @@ export default function NoteDetailController(Note, messages, $stateParams, $stat
     ///////////
 
     function activate() {
-        messages.subscribe('userId', setUserId);
+        messages.subscribe('currentUser', setCurrentUser);
         if ($stateParams.id) {
             Note.get({
                 id: $stateParams.id
@@ -28,8 +28,8 @@ export default function NoteDetailController(Note, messages, $stateParams, $stat
         }
     }
 
-    function setUserId(userId) {
-        vm.userId = userId;
+    function setCurrentUser(user) {
+        vm.user = user;
     }
 
     function setNote(note) {

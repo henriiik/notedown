@@ -1,10 +1,10 @@
 import mock from 'angular-mocks';
 
 describe('UserController', () => {
-    var UserController, mockNote, mockMessages, mockUser, topic, listener, userId, mockStateParams;
+    var UserController, mockNote, mockMessages, mockUser, topic, listener, user, mockStateParams;
 
     beforeEach(() => {
-        userId = 123;
+        user = {id: 123};
 
         mock.module('notedown.users');
 
@@ -48,20 +48,21 @@ describe('UserController', () => {
         expect(UserController).toBeDefined();
     });
 
-    it('should subscribe to userId with a function', () => {
+    it('should subscribe to currentUser with a function', () => {
         expect(mockMessages.subscribe).toHaveBeenCalled();
-        expect(topic).toEqual('userId');
+        expect(topic).toEqual('currentUser');
         expect(listener).toEqual(jasmine.any(Function));
     });
 
-    it('subscribe function should set userId', () => {
-        listener(userId);
-        expect(UserController.userId).toBe(userId);
+    it('subscribe function should set user', () => {
+        listener(user);
+        expect(UserController.currentUser).toBe(user);
     });
 
     it('subscribe function should delete userId', () => {
+        listener(user);
         listener();
-        expect(UserController.userId).toBeUndefined();
+        expect(UserController.user).toBeUndefined();
     });
 
     it('should get state user', () => {
@@ -69,7 +70,7 @@ describe('UserController', () => {
     });
 
     it('should get state user notes', () => {
-        listener(userId);
+        listener(user);
         expect(mockNote.query).toHaveBeenCalledWith({user: mockStateParams.id});
     });
 

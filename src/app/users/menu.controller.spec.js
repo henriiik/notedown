@@ -1,10 +1,10 @@
 import mock from 'angular-mocks';
 
 describe('MenuController', () => {
-    var MenuController, mockAuth, mockMessages, mockUser, topic, listener, userId;
+    var MenuController, mockAuth, mockMessages, mockUser, topic, listener, user;
 
     beforeEach(() => {
-        userId = 123;
+        user = {id: 123};
 
         mock.module('notedown.users');
 
@@ -54,23 +54,18 @@ describe('MenuController', () => {
         expect(mockMessages.subscribe).toHaveBeenCalled();
     });
 
-    it('should subscribe to userId with a function', () => {
-        expect(topic).toEqual('userId');
+    it('should subscribe to currentUser with a function', () => {
+        expect(topic).toEqual('currentUser');
         expect(listener).toEqual(jasmine.any(Function));
     });
 
-    it('subscribe function should set userId', () => {
-        listener(userId);
-        expect(MenuController.userId).toBe(userId);
-    });
-
-    it('subscribe function should get user', () => {
-        listener(userId);
-        expect(mockUser.get).toHaveBeenCalledWith({id: userId});
+    it('subscribe function should set user', () => {
+        listener(user);
+        expect(MenuController.user).toBe(user);
     });
 
     it('subscribe function should delete userId', () => {
         listener();
-        expect(MenuController.userId).toBeUndefined();
+        expect(MenuController.user).toBeUndefined();
     });
 });

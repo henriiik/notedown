@@ -10,11 +10,11 @@ export default function NoteListController($http, $log, User, Note, messages) {
     ///////////
 
     function activate() {
-        messages.subscribe('userId', setUserId);
+        messages.subscribe('currentUser', setCurrentUser);
     }
 
-    function setUserId(userId) {
-        vm.userId = userId;
+    function setCurrentUser(user) {
+        vm.user = user;
         Note.query(notes => vm.notes = notes);
     }
 }

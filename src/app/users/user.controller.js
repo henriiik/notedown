@@ -8,7 +8,7 @@ export default function UserController(User, Note, messages, $stateParams, $stat
     ///////////
 
     function activate() {
-        messages.subscribe('userId', setUserId);
+        messages.subscribe('currentUser', setCurrentUser);
         if ($stateParams.id) {
             vm.user = User.get({
                 id: $stateParams.id
@@ -24,8 +24,8 @@ export default function UserController(User, Note, messages, $stateParams, $stat
         });
     }
 
-    function setUserId(userId) {
-        vm.userId = userId;
+    function setCurrentUser(user) {
+        vm.currentUser = user;
         getNotes();
     }
 }

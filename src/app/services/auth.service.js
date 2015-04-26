@@ -1,11 +1,12 @@
 /* globals gapi */
 /*eslint max-len: 0 */
 
-auth.$inject = ['$window', '$http', '$log', '$timeout', 'apiUrl', 'messages', 'toasts'];
+auth.$inject = ['$window', '$http', '$log', '$timeout', 'apiUrl', 'messages', 'toasts', 'User'];
 
-export default function auth($window, $http, $log, $timeout, apiUrl, messages, toasts) {
+export default function auth($window, $http, $log, $timeout, apiUrl, messages, toasts, User) {
     var token;
     var userId;
+    var currentUser;
     var auth2;
     var service = {
         signIn: signIn,
@@ -36,6 +37,7 @@ export default function auth($window, $http, $log, $timeout, apiUrl, messages, t
         token = localStorage.getItem('token');
         userId = parseInt(localStorage.getItem('userId'), 10);
         $http.defaults.headers.common.Authorization = 'Token ' + token;
+        currentUser = User.get({id: userId});
         publish();
     }
 
@@ -45,12 +47,13 @@ export default function auth($window, $http, $log, $timeout, apiUrl, messages, t
         token = undefined;
         userId = undefined;
         delete $http.defaults.headers.common.Authorization;
+        currentUser = undefined;
         publish();
         toasts.show('Logout successful');
     }
 
     function publish() {
-        messages.publish('userId', userId);
+        messages.publish('currentUser', currentUser);
     }
 
     function loadAuth2() {
