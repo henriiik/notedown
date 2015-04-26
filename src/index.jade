@@ -15,7 +15,7 @@ html(ng-app="notedown")
             div(layout="column" layout-align="space-around center")
                 h1.md-display-4(hide show-gt-sm ui-sref="list") Notedown!
                 h1.md-display-3(hide show-sm ui-sref="list") Notedown!
-            div(layout="row" layout-align="space-around center" ng-controller="UserController as vm")
+            div(layout="row" layout-align="space-around center" ng-controller="MenuController as vm")
                 md-button.md-raised(ng-if="'detail' | isState" ui-sref="list") All notes
                 md-button.md-raised(ng-if="vm.user" ui-sref="detail({id: ''})") New note
                 md-button.md-raised(ng-if="vm.user" ng-click="vm.signOut()") Sign out

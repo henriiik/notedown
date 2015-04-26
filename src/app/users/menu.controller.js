@@ -1,6 +1,6 @@
-UserController.$inject = ['$log', 'User', 'auth', 'messages'];
+MenuController.$inject = ['$log', 'User', 'auth', 'messages'];
 
-export default function UserController($log, User, auth, messages) {
+export default function MenuController($log, User, auth, messages) {
     var vm = this;
 
     vm.signIn = auth.signIn;

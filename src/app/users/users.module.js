@@ -1,5 +1,5 @@
 import User from './user.service';
-import UserController from './user.controller';
+import MenuController from './menu.controller';
 
 angular
     .module('notedown.users', [
@@ -7,4 +7,4 @@ angular
         'notedown.services'
     ])
     .factory('User', User)
-    .controller('UserController', UserController);
+    .controller('MenuController', MenuController);

@@ -1,7 +1,7 @@
 import mock from 'angular-mocks';
 
-describe('UserController', () => {
-    var UserController, mockAuth, mockMessages, mockUser, topic, listener, userId;
+describe('MenuController', () => {
+    var MenuController, mockAuth, mockMessages, mockUser, topic, listener, userId;
 
     beforeEach(() => {
         userId = 123;
@@ -34,20 +34,20 @@ describe('UserController', () => {
         });
 
         mock.inject($controller => {
-            UserController = $controller('UserController');
+            MenuController = $controller('MenuController');
         });
     });
 
     it('should be defined', () => {
-        expect(UserController).toBeDefined();
+        expect(MenuController).toBeDefined();
     });
 
     it('should have signIn function', () => {
-        expect(UserController.signIn).toBeDefined();
+        expect(MenuController.signIn).toBeDefined();
     });
 
     it('should have signOut function', () => {
-        expect(UserController.signIn).toBeDefined();
+        expect(MenuController.signIn).toBeDefined();
     });
 
     it('should subscribe to auth service', () => {
@@ -61,7 +61,7 @@ describe('UserController', () => {
 
     it('subscribe function should set userId', () => {
         listener(userId);
-        expect(UserController.userId).toBe(userId);
+        expect(MenuController.userId).toBe(userId);
     });
 
     it('subscribe function should get user', () => {
@@ -71,6 +71,6 @@ describe('UserController', () => {
 
     it('subscribe function should delete userId', () => {
         listener();
-        expect(UserController.userId).toBeUndefined();
+        expect(MenuController.userId).toBeUndefined();
     });
 });
