@@ -143,19 +143,6 @@ code.
 gulp pre-commit
 ```
 
-## Project Log
-
-### Week 1
-
-Got the frontend up and runnning with a small test page that loads a small
-angular app with systemjs and transpiles es6 in the browser. The result was at
-first very slow but after fixing the configuration it sped up quite a bit.
-
-Also got a openshift server running on [openshift online][openshift] since
-https://openshift.ida.liu.se seems to be down. The system seems quite usable,
-but the deploys take a lot of time.
-
-
 [angular]: https://angular.io/
 [traceur]: https://github.com/google/traceur-compiler
 [SystemJS]: https://github.com/systemjs/systemjs
@@ -170,4 +157,3 @@ but the deploys take a lot of time.
 [jasmine]: http://jasmine.github.io/
 [protractor]: http://angular.github.io/protractor/
 [selenium]: http://docs.seleniumhq.org/
-[openshift]: https://openshift.redhat.com
