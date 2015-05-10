@@ -1,5 +1,6 @@
 System.config({
   "baseURL": "/",
+  "transpiler": "traceur",
   "paths": {
     "*": "*.js",
     "github:*": "jspm_packages/github/*.js",
@@ -10,14 +11,14 @@ System.config({
 System.config({
   "map": {
     "angular": "github:angular/bower-angular@1.3.15",
-    "angular-material": "github:angular/bower-material@0.9.0-rc2",
+    "angular-material": "github:angular/bower-material@0.9.0",
     "angular-mocks": "github:angular/bower-angular-mocks@1.3.15",
     "angular-resource": "github:angular/bower-angular-resource@1.3.15",
     "angular-sanitize": "github:angular/bower-angular-sanitize@1.3.15",
     "angular-ui-router": "github:angular-ui/ui-router@0.2.14",
     "showdown": "github:showdownjs/showdown@0.4.0",
-    "traceur": "github:jmcriffey/bower-traceur@0.0.87",
-    "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.87",
+    "traceur": "github:jmcriffey/bower-traceur@0.0.88",
+    "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.88",
     "github:angular-ui/ui-router@0.2.14": {
       "angular": "github:angular/bower-angular@1.3.15"
     },
@@ -33,6 +34,12 @@ System.config({
     "github:angular/bower-angular-sanitize@1.3.15": {
       "angular": "github:angular/bower-angular@1.3.15"
     },
+    "github:angular/bower-material@0.9.0": {
+      "angular": "github:angular/bower-angular@1.3.15",
+      "angular-animate": "github:angular/bower-angular-animate@1.3.15",
+      "angular-aria": "github:angular/bower-angular-aria@1.3.15",
+      "css": "github:systemjs/plugin-css@0.1.10"
+    },
     "github:angular/bower-material@0.9.0-rc2": {
       "angular": "github:angular/bower-angular@1.3.15",
       "angular-animate": "github:angular/bower-angular-animate@1.3.15",
@@ -43,7 +50,7 @@ System.config({
       "assert": "npm:assert@1.3.0"
     },
     "github:jspm/nodelibs-buffer@0.1.0": {
-      "buffer": "npm:buffer@3.2.1"
+      "buffer": "npm:buffer@3.2.2"
     },
     "github:jspm/nodelibs-events@0.1.0": {
       "events-browserify": "npm:events-browserify@0.0.1"
@@ -91,9 +98,9 @@ System.config({
     "npm:assert@1.3.0": {
       "util": "npm:util@0.10.3"
     },
-    "npm:buffer@3.2.1": {
+    "npm:buffer@3.2.2": {
       "base64-js": "npm:base64-js@0.0.8",
-      "ieee754": "npm:ieee754@1.1.4",
+      "ieee754": "npm:ieee754@1.1.5",
       "is-array": "npm:is-array@1.0.1"
     },
     "npm:clean-css@3.1.9": {
