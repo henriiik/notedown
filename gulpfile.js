@@ -3,7 +3,6 @@
 
 var del = require('del');
 var gulp = require('gulp');
-var jade = require('gulp-jade');
 var jspm = require('jspm');
 var path = require('path');
 
@@ -13,9 +12,6 @@ if (!process.env.NPM_CONFIG_PRODUCTION) {
 }
 
 var paths = {
-    jade: [
-        'src/**/*.jade'
-    ],
     js: [
         'karma.conf.js',
         'protractor.conf.js',
@@ -23,7 +19,7 @@ var paths = {
         'server.js',
         'src/app/**/*.js'
     ],
-    build: 'frontend/build'
+    build: 'src'
 };
 
 gulp.task('lint', function () {
@@ -47,30 +43,13 @@ gulp.task('tdd', function (done) {
     }, done);
 });
 
-gulp.task('pre-commit', ['test', 'lint']);
-
-gulp.task('clean', function (callBack) {
-    del(paths.build, callBack);
-});
-
-gulp.task('build:jade', function () {
-    return gulp.src(paths.jade)
-        .pipe(jade({
-            locals: {
-                production: true
-            }
-        }))
-        .pipe(gulp.dest(paths.build));
-});
-
-gulp.task('build:js', function () {
+gulp.task('build', function () {
     return jspm.bundleSFX('app/notedown.module', paths.build + '/notedown.js', {
         minify: true,
         mangle: true,
-        sourceMaps: false
+        sourceMaps: true
     });
 });
 
-gulp.task('build', ['build:js', 'build:jade']);
-
+gulp.task('pre-commit', ['test', 'lint']);
 gulp.task('default', ['pre-commit']);

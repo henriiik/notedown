@@ -17,7 +17,6 @@ export default function messages() {
     }
 
     function publish(topic, info) {
-        console.log(topic, info);
         latest[topic] = info;
         angular.forEach(topics[topic], function (listener) {
             listener(info);

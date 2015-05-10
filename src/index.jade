@@ -22,7 +22,7 @@ html(ng-app="notedown")
                 md-button.md-raised(ng-if="vm.user.$resolved" ng-click="vm.signOut()") Sign out
                 md-button.md-raised.md-primary(ng-if="!vm.user" ng-click="vm.signIn()" class="") Sign in with Google
             div(layout="row" flex-wrap style="width:100%" ui-view ng-cloak)
-        if production
+        if environment == "production"
             script(type="text/javascript" src="https://apis.google.com/js/client:platform.js" async defer)
             script(type="text/javascript" src="notedown.js")
         else
