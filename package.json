@@ -26,7 +26,7 @@
   "dependencies": {
     "del": "^1.1.1",
     "gulp": "^3.8.11",
-    "gulp-eslint": "^0.10.0",
+    "gulp-eslint": "^0.11.1",
     "gulp-jade": "^1.0.0",
     "harp": "^0.17.0",
     "jasmine-core": "^2.2.0",
