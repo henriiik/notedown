@@ -1,7 +1,6 @@
 /*eslint "strict": 0, "max-len": [2, 100, 4] */
 'use strict';
 
-var del = require('del');
 var gulp = require('gulp');
 var jspm = require('jspm');
 var path = require('path');
