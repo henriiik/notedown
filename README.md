@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/henriiik/notedown.svg?branch=master)](https://travis-ci.org/henriiik/notedown)
+[ ![Codeship Status for henriiik/notedown](https://codeship.com/projects/93a7a0f0-bf82-0132-57f9-7e12d1fd4345/status?branch=master)](https://codeship.com/projects/72993)
 
 # Notedown
 
