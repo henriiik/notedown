@@ -16,7 +16,8 @@ var paths = {
         'protractor.conf.js',
         'gulpfile.js',
         'server.js',
-        'src/app/**/*.js'
+        'src/app/**/*.js',
+        'e2e/**/*.js'
     ],
     build: 'src'
 };
@@ -25,7 +26,7 @@ gulp.task('lint', function () {
     return gulp.src(paths.js)
         .pipe(eslint())
         .pipe(eslint.format())
-        .pipe(eslint.failOnError());
+        .pipe(eslint.failAfterError());
 });
 
 gulp.task('test', function (done) {

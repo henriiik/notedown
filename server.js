@@ -1,6 +1,6 @@
 #!/bin/env node
 
-var harp = require('harp')
+var harp = require('harp');
 var port = process.env.OPENSHIFT_NODEJS_PORT || 9000;
 var ip = process.env.OPENSHIFT_NODEJS_IP || 'localhost';
 

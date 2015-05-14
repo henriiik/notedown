@@ -1,16 +1,16 @@
 /* globals browser, element, by */
 describe('Notedown', function () {
     function Page() {
-        var page = this;
+        this.get = function () {
+            browser.get('http://127.0.0.1.xip.io:9000');
+        };
 
-        page.get = function () {
-            browser.get('http://localhost:9000')
-        }
+        this.signInButton = element(by.cssContainingText('.md-button', 'Sign in with Google'));
+        this.allNotesButton = element(by.cssContainingText('.md-button', 'All notes'));
 
-        page.signInButton = element(by.buttonText('Sign in with Google'))
-
-        return page;
+        this.noteList = element.all(by.repeater('note in vm.notes'));
     }
+
     var page;
     beforeEach(function () {
         page = new Page();
@@ -23,5 +23,13 @@ describe('Notedown', function () {
 
     it('should have sign in button', function () {
         expect(page.signInButton.isPresent()).toBe(true);
+    });
+
+    it('should have all notes button', function () {
+        expect(page.allNotesButton.isPresent()).toBe(true);
+    });
+
+    it('should have notes', function () {
+        expect(page.noteList.count()).toBeGreaterThan(0);
     });
 });
