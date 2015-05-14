@@ -6,7 +6,7 @@
   "scripts": {
     "test": "gulp test",
     "dev": "harp server ./src",
-    "build": "jspm install; gulp clean; gulp build",
+    "build": "jspm install; gulp build",
     "update-webdriver": "webdriver-manager update",
     "protractor": "protractor"
   },
